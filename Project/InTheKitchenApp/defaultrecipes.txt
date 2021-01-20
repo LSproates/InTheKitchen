@@ -1,0 +1,204 @@
+<defaultrecipe>
+<recipe>
+<title>Chicken and Mushroom Pie</title>
+<description>
+A tasty British dish. This is just what you need on a cold night. Serve with creamy mashed potatoes.
+</description>
+<notes>
+Use chicken thights for a better taste.
+Use shortcrut pastry (not puff pastry) if chicken pie is to be saved and served cold.
+</notes>
+<photoname>Chicken-bacon-and-mushroom-plate-pie.jpg</photoname>
+<preptime>45</preptime>
+<cookingtime>30</cookingtime>
+<persons>4 - 6</persons>
+<sugar>6</sugar>
+<energy>855</energy>
+<protein>55</protein>
+<carbohydrates>57</carbohydrates>
+<fat>47</fat>
+<natrium>3</natrium>
+<fibres>1</fibres>
+<kitchen>Engels</kitchen>
+<mealtype>
+Kip
+</mealtype>
+<theme>
+Daags, Avond maaltijd
+</theme>
+<steps>
+STEP 1
+Heat the oil in a large, non-stick frying pan. Season the chicken thighs and fry for 5-8 mins until golden brown, turning occasionally. You may need to do this in two batches, depending on the size of your pan.
+
+STEP 2
+Lift the chicken onto a plate and tip the bacon pieces into the pan. Fry for 5 mins until crisp. Add the onion, mushrooms and thyme sprigs, then fry on a high heat for another 3 mins until the onions start to colour. Tip the flour into the pan and cook, stirring, for 1 min.
+
+STEP 3
+With the pan off the heat, gradually stir or whisk in the chicken stock, followed by the milk, then add the chicken back to the pan.
+
+STEP 4
+Bring to the boil, then simmer for 30 mins. Spoon the filling into a large pie or baking dish (approx 20 x 30cm) with a lip and leave to cool.
+
+STEP 5
+Heat the oven to 220C/200C fan/gas 7. On a floured surface, roll the pastry to the thickness of two coins. Cut a long strip as wide as the rim of the pie dish and, using a little of the beaten egg, fix to the edge of the pie dish. Brush with beaten egg, then lift the rest of the pastry over the pie, using the rolling pin to help. Gently press the edges with your fingers and trim with a sharp knife.
+
+STEP 6
+Brush lightly with egg to glaze, then bake for 30 mins or until the pastry is risen and dark golden brown.
+</steps>
+<ingredients>
+1 tbsp vegetable oil
+8 skinless boneless chicken thighs
+8 rashers smoked streaky bacon, cut into large pieces
+1 onion, halved and sliced
+250g baby button mushrooms
+handful of thyme sprigs
+2 tbsp plain flour
+400ml chicken stock
+200ml milk
+500g pack fresh puff pastry, or frozen and defrosted
+1 egg, beaten</ingredients>
+<source>https://www.bbcgoodfood.com/recipes/chicken-mushroom-puff-pie</source>
+</recipe>
+
+<recipe>
+<title>Wentelteefjes</title>
+<description>
+Nice breakfast
+</description>
+<notes>
+Hoe maak je de lekkerste wentelteefjes met brood, eieren, suiker en kaneel? Met dit recept lukt het zeker!
+</notes>
+<photoname>hartige wentelteefjes.jpg</photoname>
+<preptime>10</preptime>
+<cookingtime>10</cookingtime>
+<persons>4 stuks</persons>
+<sugar></sugar>
+<energy></energy>
+<protein></protein>
+<carbohydrates></carbohydrates>
+<fat></fat>
+<natrium></natrium>
+<fibres></fibres>
+<kitchen>Nederlands</kitchen>
+<mealtype>
+Brood, Eieren
+</mealtype>
+<theme>
+Ontbijt
+</theme>
+<steps>
+Klop de eieren los met de melk in een diep bord. Voeg een snuf kaneel toe en de vanillesuiker. Klop nog een keer goed door met een vork of garde.
+
+Leg een sneetje brood er ca. 20 seconden in en draai hem daarna om en doop ook de andere zijde in het eiermengsel. Verhit ondertussen wat boter of margarine in een pan en leg hier het sneetje brood in. Bak aan de onderkant goudbruin, draai om en bak ook de andere zijde bruin. Herhaal dit ook met de rest. 
+
+Bestrooi de wentelteefjes voor het serveren nog lichtjes met wat suiker.
+
+ Tip: gebruik liever geen vers brood, dit scheurt makkelijk en is bovendien zonde.</steps>
+<ingredients>
+4 sneetjes brood
+1 ei
+200 ml melk
+snuf kaneel
+1 zakje vanillesuiker
+Suiker om te bestrooien
+boter of margarine
+</ingredients>
+<source>https://www.leukerecepten.nl/recepten/wentelteefjes</source>
+</recipe>
+
+<recipe>
+<title>Kippenpoten uit de oven</title>
+<description>
+Als je nooit kippenpoten maakt omdat het kluiven aan een bot je tegenstaat dan moet je nu toch echt je principes opzij zetten. Probeer het een keer!
+Knapperig aan de buitenkant met een pittig korstje en sappig van binnen, klinkt al goed toch!
+De bereiding is heel simpel en supersnel, als jij de kippenpoten met kruiden en olijfolie hebt ingesmeerd ben je klaar en doet de oven het werk.</description>
+<notes>
+Ongekruide kippenpoten.
+
+Gerookt paprikapoeder is verkrijgbaar bij de goed gesorteerde supermarkten. Je kunt het vervangen door gewone paprikapoeder.
+</notes>
+<photoname>kippenpoten_uit_de_oven.jpg</photoname>
+<preptime>5</preptime>
+<cookingtime>35</cookingtime>
+<persons>5</persons>
+<sugar></sugar>
+<energy></energy>
+<protein></protein>
+<carbohydrates></carbohydrates>
+<fat></fat>
+<natrium></natrium>
+<fibres></fibres>
+<kitchen>Nederlands</kitchen>
+<mealtype>
+Kip
+</mealtype>
+<theme>
+Daags, Tussendoortje
+</theme>
+<steps>
+1 Verwarm je oven voor op 200 graden.
+2 Spoel de kippenpoten af onder de kraan en dep ze droog met keukenpapier.
+3 Meng alle kruiden in een bakje en strooi het over de kippenpoten, verdeel het gelijkmatig.
+4 Druppel er een beetje olijfolie over en wrijf het in met je handen.
+5 Leg de kippenpoten in een braadslee of ovenschaal en bak in 35 min. gaar in de oven. Draai halverwege om.
+6 De kippenpoten zijn vrijwel overal lekker bij, bijvoorbeeld met een stampotje rauwe andijvie en zongedroogde tomaat.
+</steps>
+<ingredients>
+    5 kippenpoten
+    1 theel. gerookt paprikapoeder*
+    1 theel. uipoeder
+    1 theel. knoflookpoeder
+    1 theel. versgemalen zwarte peper
+    1/2 theel. cayennepeper
+    1 theel. zout
+    Olijfolie
+</ingredients>
+<source>http://silvieskitchen.nl/kippenpoten-uit-de-oven</source>
+</recipe>
+
+<recipe>
+<title>Koolsalade met romige mosterddressing</title>
+<description>
+Deze vegetarische salade met witte kool is al in 10 minuten klaar.
+</description>
+<notes>
+Tip:
+Maak je ook burgers op de barbecue? Houd dan wat tomaten en uitjes achter voor op de burgers. Je kunt ook wat extra dressing maken en die gebruiken als burgersaus.
+</notes>
+<photoname>Koolsalade met romige mosterddressing.png</photoname>
+<preptime>10</preptime>
+<cookingtime></cookingtime>
+<persons>4</persons>
+<sugar>25</sugar>
+<energy>265</energy>
+<protein>4</protein>
+<carbohydrates>1</carbohydrates>
+<fat>15</fat>
+<natrium>360</natrium>
+<fibres>5</fibres>
+<kitchen>Nederlands</kitchen>
+<mealtype>
+Salade, Wittekool, Bijgerecht
+</mealtype>
+<theme>
+Daags
+</theme>
+<steps>
+    Roer voor de dressing de mayonaise, yoghurt, mosterd en honing door elkaar. Breng op smaak met versgemalen peper en eventueel zout.
+    Snijd de tomaten elk in acht parten. Halveer de Amsterdamse uien.
+    Schep de dressing door de witte kool. Meng met de tomaten, Amsterdamse uien en rozijnen. Breng op smaak met peper en zout.
+</steps>
+<ingredients>
+4 el mayonaise
+4 el yoghurt
+1 el Franse mosterd
+1/2 el vloeibare honing
+380 g tastytom-trostomaten
+200 g Amsterdamse uitjes
+300 g gesneden witte kool
+75 g rozijnen</ingredients>
+<source>https://www.ah.nl/allerhande/recept/R-R1194143/koolsalade-met-romige-mosterddressing</source>
+</recipe>
+
+
+</defaultrecipe>

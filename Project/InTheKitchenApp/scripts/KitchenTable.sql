@@ -1,0 +1,6 @@
+DROP TABLE kitchen;
+CREATE TABLE kitchen (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+  kitchen_type VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id)
+)

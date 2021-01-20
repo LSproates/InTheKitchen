@@ -1,0 +1,3 @@
+INSERT INTO mealtype (meal_type) values (''), ('Bief'), ('Varkensvlees'), ('Kip'), ('Kaas'), ('Pasta'), ('Ovenschotel'), ('Rijst'), ('Bami-Noodles'), ('Sushi'),
+('Aardappel'), ('Groenten'), ('Eieren'), ('Koekjes'), ('Salades'), ('Sauzen'), ('Soepen'), ('Taarten en cakes'), ('Drankjes'), ('Brood'), ('Smoothies'),
+('Hartige snacks'), ('Zoete snacks'), ('Gezond'), ('Vis'), ('Dressing'), ('Chocolade'), ('Fruit'), ('Noten'), ('Eend')

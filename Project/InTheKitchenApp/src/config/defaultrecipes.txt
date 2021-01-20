@@ -1,0 +1,59 @@
+<defaultrecipe>
+  <recipe>
+    <title>Chicken Pie</title>
+    <description>
+    </description>
+    <notes>
+    </notes>
+    <photoname></photoname>
+    <preptime></preptime>
+    <cookingtime></cookingtime>
+    <persons></persons>
+    <sugar></sugar>
+    <energy></energy>
+    <protein></protein>
+    <carbohydrates></carbohydrates>
+    <fat></fat>
+    <natrium></natrium>
+    <fibres></fibres>
+    <kitchen></kitchen>
+    <mealtype>
+    </mealtype>
+    <theme>
+    </theme>
+    <steps>
+    </steps>
+    <ingredients>
+    </ingredients>
+    <source></source>
+  </recipe>
+
+  <recipe>
+    <title>Chicken Pie</title>
+    <description>
+    </description>
+    <notes>
+    </notes>
+    <photoname></photoname>
+    <preptime></preptime>
+    <cookingtime></cookingtime>
+    <persons></persons>
+    <sugar></sugar>
+    <energy></energy>
+    <protein></protein>
+    <carbohydrates></carbohydrates>
+    <fat></fat>
+    <natrium></natrium>
+    <fibres></fibres>
+    <kitchen></kitchen>
+    <mealtype>
+    </mealtype>
+    <theme>
+    </theme>
+    <steps>
+    </steps>
+    <ingredients>
+    </ingredients>
+    <source></source>
+  </recipe>
+</defaultrecipe>

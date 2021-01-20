@@ -1,0 +1,1322 @@
+<ingredientlist>
+  <ingredient>
+    <title>Kip filet</title>
+    <photoname>kipfilet.jpg</photoname>
+    <description>
+Kipfilet is het borstdeel van de kip. Kenmerk van kipfilet is dat deze vetarm en lichtverteerbaar is. Het is daarom een populair alternatief voor varkens- en rundvlees als bestanddeel van de avondmaaltijd. Kipfilet wordt ook veel gebruikt als blokjes of reepjes in roerbakgerechten.</description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kippendij</title>
+    <photoname>kippendij.jpg</photoname>
+    <description>
+Kipdpendijen is vlees dat afkomstig is van het bovenste gedeelte van de kippenpoot. Dit vlees is donkerder van kleur in vergelijking met de kipfilet, en minstens even smakelijk. Liefhebbers zeggen nog wel eens dat zij dijfilet lekkerder vinden dan de kip(borst)filet.</description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kippenpoot</title>
+    <photoname>kippenpoot.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+	
+  <ingredient>
+    <title>Kippenbout</title>
+    <photoname>kippenbout.jpg</photoname>
+    <description>
+Een kippenbout is de grote versie van de kippenpoot met bot, vel en spiermassa. Iets minder handzaam, maar even mals en sappig. Kippenpoot en kippenbout passen in veel verschillende soorten keukens: Italiaans, Frans of Aziatisch.</description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kip gehakt</title>
+    <photoname>kipgehakt.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+    	
+  <ingredient>
+    <title>Kip karbonade</title>
+    <photoname>kipkarbonade.jpg</photoname>
+    <description>
+Een kipkarbonade komt uit het bovenste deel van de kippenpoot. Het vlees wordt meestal met bot verkocht. Kipkarbonade is erg lekker om te bakken met een marinade of als stoof.</description>
+ </ingredient>
+
+  <ingredient>
+    <title>zout</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>peper</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>zwarte peper</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>witte peper</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>suiker</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>water</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>runderbouillon</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>kippenbouillon</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>verse tijm</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>tijm</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>verse peterselie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>peterselie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>verse korinader</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>koriander</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>rode chilipeper</title>
+    <photoname>rodepeper.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>groene chilipeper</title>
+    <photoname>groenepeper.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>chilipoeder</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>rode ui</title>
+    <photoname>rodeui.jpg</photoname>
+    <description>
+De smaak van de rode ui is scherper dan die van de gewone, gele ui. Uien kunnen rauw, gekookt of gebakken gegeten worden.
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>ui</title>
+    <photoname>uien.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>knoflook</title>
+    <photoname>knoflook.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>knoflookpoeder</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Olijfolie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Zonnebloemolie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Sesamolie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rijstolie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Licht soyasaus</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Donker soyasaus</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Oestersaus</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Zoete chilisaus</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rijstwijn</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Azijn</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Mirin</title>
+    <photoname>mirin.jpg</photoname>
+    <description>
+Zoete Japanse keukenwijn.
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Applelazijn</title>
+    <photoname>appelazijn.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Hoisin saus</title>
+    <photoname>hoisinsaus.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Gember</title>
+    <photoname>gember.jpg</photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Oregano</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Djahe</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Katoembar</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Ve-tsin</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Laos</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kaneel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>5 Spices</title>
+    <photoname></photoname>
+    <description>
+Chinees specerijen melange
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Paprikapoeder</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rode paprika</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Gele paprika</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Groene paprika</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kerrie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Sesamzaad</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kruidnagel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Zeezout</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Majoraan</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rozemarijn</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Nootmuskaat</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Selieblad</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kurkuma</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Komijnzaad</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Uienpoeder</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Anijszaad</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Worcestershire saus</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Lente ui</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Prei</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Ham</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Boter</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Ei</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Aardappel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Vast kokende aardappel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kruimelige aardappel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Krieltjes</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Wortel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bloemkool</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Spinazie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Komkommer</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Sperziebonen</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Spruitjes</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Broccoli</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Sla</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Tomaat</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Tomatenpuree</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Aubegine</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bosui</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Snijbonen</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Cougette</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Koolraap</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rode biet</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Chinese kool</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rettich</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Radijs</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Andijvie</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Asperges</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Appel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Sinasappel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Aardbei</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Peer</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Framboos</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Druiven</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Krenten</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rozijnen</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Blanke rozijnen</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bruine suiker</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Blauwe bessen</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bastaard suiker</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kristal suiker</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Poeder suiker</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Lichte bastaard suiker</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bloem</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Zelfrijzend bakmeel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bakpoeder</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Vanille suiker</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Vanille extract</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Citroensap</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Limoensap</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Appelsap</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Sinasappelsap</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Mandarijn</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Banaan</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kiwi</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Sasperilla</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Ananas</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Ananassap</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kokosmelk</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rendang blokje</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Biefstuk</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Gehakt</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Ossenhaas</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Entrecote</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Lende biefstuk</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Succade lapjes</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rundvlees</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Sudderlapjes</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Varkensfilet</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Verkensgehakt</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Karbonade</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Speklapjes</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bacon/Ontbijspek</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Varkenshaas</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Zalm</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Koolvisfilet</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Makreel</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Lekkerbekje</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kaas</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Pasta</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Spagetti</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Macaroni</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Erwten</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rijst</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rijstazijn</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Kleefrijst</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Noriblad</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Tonijn</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Avacado</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Surimi</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Puur chocolade</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Melk chocolade</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Witte chocolade</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Marsepein</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Melk</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Joghurt</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Soep kip</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Mozzarella</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Champignon</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bleekselderij</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Slagroom</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Rode bessen</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Brood</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Bruin brood</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Volkoren brood</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>groentebouillon</title>
+    <photoname></photoname>
+    <description>
+Makkelijk om een greontebouillonblokje met (warm) water te mengen. Geeft een volle smaak aan sopen en sausen waar geen vlees in wordt gekookt.
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Roomboter</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Laurierbladeren</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Tomaten</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Soepgroenten</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>vermicelli</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Mosterd</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Mayonaise</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Griekse yoghurt</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Franse mosterd</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Honing</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Amsterdamse uien</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Witte kool</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>Cooking oil</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>eiwit</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+  <ingredient>
+    <title>maizena</title>
+    <photoname></photoname>
+    <description>
+    </description>
+ </ingredient>
+
+</ingredientlist>
