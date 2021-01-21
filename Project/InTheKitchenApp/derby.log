@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-2021-01-19 09:42:10.890 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.2.0 - (485682): instance c013800d-0177-1a05-e7c9-000007700000
-on database directory D:\Documents\Eclipse Work\eclipse_inthekitchen\eclipse-workspace\desktopapp\InTheKitchenApp\recipes  
+2021-01-21 15:09:41.605 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.2.0 - (485682): instance c013800d-0177-257e-7864-000007755570
+on database directory C:\Users\l_spr\git\InTheKitchen\Project\InTheKitchenApp\recipes  
 
 Database Class Loader started - derby.database.classpath=''
