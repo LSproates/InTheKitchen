@@ -209,6 +209,8 @@ public class MainView {
 	private JTextField txtRecipeInputManTag5;
 	private JTextField txtRecipeInputManTag6;
 	private JTextField txtRecipeInputManTag7;
+	private JButton btnRecipeInputManMaaltype;
+	private JButton btnRecipeInputManThema;
 
 	/**
 	 * Launch the application.
@@ -391,6 +393,94 @@ public class MainView {
 	          }
 			}
 		});
+		
+		btnRecipeInputManKeuken.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] listOfItems = new String[listOfKitchens.size()];
+				listOfItems = listOfKitchens.toArray(listOfItems);
+				
+				ArrayList<String> selectedNames = FilterDialog.showDialog(
+									frmInTheKitchen,
+									btnRecipeInputManKeuken, 
+									"Available kitchens:", 
+									"Choose kitchen", 
+									listOfItems,
+									txtRecipeInputManKeuken.getText(), 
+									"Algemeen",
+									ListSelectionModel.SINGLE_SELECTION);
+				  
+				String itemsSelected = "";
+				
+				for (String itemName: selectedNames) {
+						if(itemsSelected.equals("")) {
+							itemsSelected = itemName;
+						} else {
+							itemsSelected = itemsSelected + "," + itemName;
+						}
+				}
+				
+				txtRecipeInputManKeuken.setText(itemsSelected);
+			 
+			}
+		});
+		
+		btnRecipeInputManMaaltype.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] listOfItems = new String[listOfMealTypes.size()];
+				listOfItems = listOfMealTypes.toArray(listOfItems);
+				
+				ArrayList<String> selectedNames = FilterDialog.showDialog(
+									frmInTheKitchen,
+									btnRecipeInputManMaaltype, 
+									"Available meal types:", 
+									"Choose meal types", 
+									listOfItems,
+									txtRecipeInputManMaaltype.getText(), 
+									"Aardappel",
+									ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+				  
+				String itemsSelected = "";
+				
+				for (String itemName: selectedNames) {
+						if(itemsSelected.equals("")) {
+							itemsSelected = itemName;
+						} else {
+							itemsSelected = itemsSelected + "," + itemName;
+						}
+				}
+				
+				txtRecipeInputManMaaltype.setText(itemsSelected);
+			}
+		});
+		
+		btnRecipeInputManThema.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] listOfItems = new String[listOfThemes.size()];
+				listOfItems = listOfThemes.toArray(listOfItems);
+				
+				ArrayList<String> selectedNames = FilterDialog.showDialog(
+									frmInTheKitchen,
+									btnRecipeInputManThema, 
+									"Available Themes:", 
+									"Choose theme", 
+									listOfItems,
+									txtRecipeInputManThema.getText(), 
+									"Daags",
+									ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+				  
+				String itemsSelected = "";
+				
+				for (String itemName: selectedNames) {
+						if(itemsSelected.equals("")) {
+							itemsSelected = itemName;
+						} else {
+							itemsSelected = itemsSelected + "," + itemName;
+						}
+				}
+				
+				txtRecipeInputManThema.setText(itemsSelected);
+			}
+		});
 
 
 		btnTheme.addMouseListener(new MouseAdapter() {
@@ -407,7 +497,8 @@ public class MainView {
 									"Choose theme", 
 									listOfItems,
 									txtThemaFilter.getText(), 
-									"Daags");
+									"Daags",
+									ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 				  
 				String itemsSelected = "";
 				
@@ -437,7 +528,8 @@ public class MainView {
 									"Choose meal types", 
 									listOfItems,
 									txtMaaltypeFilter.getText(), 
-									"Aardappel");
+									"Aardappel",
+									ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 				  
 				String itemsSelected = "";
 				
@@ -467,7 +559,8 @@ public class MainView {
 									"Choose kitchen", 
 									listOfItems,
 									txtKeukenFilter.getText(), 
-									"Algemeen");
+									"Algemeen",
+									ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 				  
 				String itemsSelected = "";
 				
@@ -1515,7 +1608,7 @@ public class MainView {
 		txtRecipeInputManMaaltype.setEditable(false);
 		txtRecipeInputManMaaltype.setColumns(10);
 		
-		JButton btnRecipeInpitManMaaltype = new JButton("Select");
+		btnRecipeInputManMaaltype = new JButton("Select");
 		
 		JLabel lblRecipeInputManThema = new JLabel("Thema");
 		lblRecipeInputManThema.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -1524,7 +1617,7 @@ public class MainView {
 		txtRecipeInputManThema.setEditable(false);
 		txtRecipeInputManThema.setColumns(10);
 		
-		JButton btnRecipeInputManThema = new JButton("Select");
+		btnRecipeInputManThema = new JButton("Select");
 		
 		JLabel lblRecipeInputManAantalpersonen = new JLabel("Aantal personen");
 		lblRecipeInputManAantalpersonen.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -1689,7 +1782,7 @@ public class MainView {
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addComponent(txtRecipeInputManMaaltype, GroupLayout.PREFERRED_SIZE, 293, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnRecipeInpitManMaaltype)
+									.addComponent(btnRecipeInputManMaaltype)
 									.addGap(18)
 									.addComponent(lblRecipeInputManThema)
 									.addPreferredGap(ComponentPlacement.RELATED)
@@ -1781,7 +1874,7 @@ public class MainView {
 						.addComponent(btnRecipeInputManKeuken)
 						.addComponent(lblRecipeInputManMaaltype)
 						.addComponent(txtRecipeInputManMaaltype, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnRecipeInpitManMaaltype)
+						.addComponent(btnRecipeInputManMaaltype)
 						.addComponent(lblRecipeInputManThema)
 						.addComponent(txtRecipeInputManThema, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnRecipeInputManThema))

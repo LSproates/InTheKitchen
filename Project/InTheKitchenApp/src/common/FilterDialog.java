@@ -37,13 +37,11 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 /*
- * ListDialog.java is meant to be used by programs such as
- * ListDialogRunner.  It requires no additional files.
+ * ListDialog.java is used by programs ListDialogRunner.  It requires no additional files.
  */
 
 /**
- * Use this modal dialog to let the user choose one string from a long
- * list.  See ListDialogRunner.java for an example of using ListDialog.
+ * See ListDialogRunner.java for display of elements in ListDialog.
  * The basics:
  * <pre>
     String[] choices = {"A", "long", "array", "of", "strings"};
@@ -78,7 +76,8 @@ public class FilterDialog extends JDialog
                                     String title,
                                     String[] possibleValues,
                                     String initialValue,
-                                    String longValue) {
+                                    String longValue,
+                                    int selectionType) {
         Frame frame = JOptionPane.getFrameForComponent(frameComp);
         dialog = new FilterDialog(frame,
                                 locationComp,
@@ -86,7 +85,8 @@ public class FilterDialog extends JDialog
                                 title,
                                 possibleValues,
                                 initialValue,
-                                longValue);
+                                longValue,
+                                selectionType);
         dialog.setVisible(true);
         return value;
     }
@@ -102,7 +102,8 @@ public class FilterDialog extends JDialog
                        String title,
                        String[] data,
                        String initialValue,
-                       String longValue) {
+                       String longValue,
+                       int selectionType) {
         super(frame, title, true);
 
         //Create and initialize the buttons.
@@ -145,7 +146,7 @@ public class FilterDialog extends JDialog
             }
         };
 
-        list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        list.setSelectionMode(selectionType);
         if (longValue != null) {
             list.setPrototypeCellValue(longValue); //get extra space
         }
@@ -198,11 +199,8 @@ public class FilterDialog extends JDialog
     public void actionPerformed(ActionEvent e) {
         if ("Set".equals(e.getActionCommand())) {
         	value.clear();
-        	System.out.println(list.getSelectedValuesList());
-        	System.out.println("Size: "+ list.getSelectedValuesList().size());
             for (int i=0; i < list.getSelectedValuesList().size(); i++) {
             	FilterDialog.value.add((String)list.getSelectedValuesList().get(i));
-            	System.out.println(FilterDialog.value.get(i));
             }
         }
         FilterDialog.dialog.setVisible(false);
