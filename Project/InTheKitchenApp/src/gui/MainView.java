@@ -166,7 +166,7 @@ public class MainView {
 	private JScrollPane spCRIngredienten;
 	private JTextArea txtaCurrentRecipeIngredienten;
 	private JScrollPane spCRSteps;
-	private JTextArea txtaStappen;
+	private JTextArea txtaCurrentRecipeStappen;
 	private JLabel lblCRIngredienten;
 	private JLabel lblCRStappen;
 	private JScrollPane spCRExtras;
@@ -332,7 +332,7 @@ public class MainView {
         lblCurrentRecipeVet.setText(databaseAccess.currentRecipe.getVet());
         lblCurrentRecipeVezels.setText(databaseAccess.currentRecipe.getVezels());
         txtaCurrentRecipeIngredienten.setText(databaseAccess.currentRecipe.getIngredienten());
-        txtaStappen.setText(databaseAccess.currentRecipe.getStappen());
+        txtaCurrentRecipeStappen.setText(databaseAccess.currentRecipe.getStappen());
         txtaCurrentRecipeExtras.setText(databaseAccess.currentRecipe.getExtras());
         txtaCurrentRecipeTags.setText(databaseAccess.currentRecipe.getTags());
 
@@ -1307,8 +1307,8 @@ public class MainView {
 		txtaCurrentRecipeExtras = new JTextArea();
 		spCRExtras.setViewportView(txtaCurrentRecipeExtras);
 		
-		txtaStappen = new JTextArea();
-		spCRSteps.setViewportView(txtaStappen);
+		txtaCurrentRecipeStappen = new JTextArea();
+		spCRSteps.setViewportView(txtaCurrentRecipeStappen);
 		
 		txtaCurrentRecipeIngredienten = new JTextArea();
 		spCRIngredienten.setViewportView(txtaCurrentRecipeIngredienten);
