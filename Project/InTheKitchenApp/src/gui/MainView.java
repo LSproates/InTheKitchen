@@ -45,6 +45,7 @@ import common.FilterDialog;
 import common.RecipeListElement;
 import common.RecipeListRenderer;
 import elementclasses.Recipe;
+import dao.*;
 
 import javax.swing.JTextArea;
 import java.awt.Component;
@@ -213,6 +214,7 @@ public class MainView {
 	private JButton btnRecipeInputManSave;
 	private JTextField txtRecipeInputManName;
 	private JPanel pnlRecipeInputManContainer;
+	private JTextArea txtaRecipeInputManNotes;
 
 	/**
 	 * Launch the application.
@@ -639,12 +641,50 @@ public class MainView {
 				// Copy input data to instance Recipe class
 				// Verify that Name has been filled, otherwise abort
 				
-				Recipe btnRecipeInputManSave = new Recipe();
+				Recipe recipeInputManSave = new Recipe();
 				
 				if (txtRecipeInputManName.getText().equals("") || txtRecipeInputManName.getText() == null) {
 					JOptionPane.showMessageDialog(null, "De naam van het recept moet ingevuld worden.", "information", JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					btnRecipeInputManSave.setNaam(txtRecipeInputManName.getText());
+					recipeInputManSave.setNaam(txtRecipeInputManName.getText());
+					recipeInputManSave.setBeschrijving(txtaRecipeInputManBeschrijving.getText());
+					recipeInputManSave.setNotes(txtaRecipeInputManNotes.getText());
+					recipeInputManSave.setAantal_personen(txtRecipeInputManAantalPersonen.getText());
+					//recipeInputManSave.setVoedingswaarde(value);
+					recipeInputManSave.setEnergie(txtRecipeInputManEnergie.getText());
+					recipeInputManSave.setEiwit(txtRecipeInputManEiwit.getText());
+					recipeInputManSave.setKoolhydraten(txtRecipeInputManKoolhydraten.getText());
+					recipeInputManSave.setVet(txtRecipeInputManVet.getText());
+					recipeInputManSave.setNatrium(txtRecipeInputManNatrium.getText());
+					recipeInputManSave.setVezels(txtRecipeInputManVezels.getText());
+					recipeInputManSave.setKeuken(txtRecipeInputManKeuken.getText());
+					recipeInputManSave.setMaal_type(txtRecipeInputManMaaltype.getText());
+					recipeInputManSave.setThema(txtRecipeInputManThema.getText());
+					recipeInputManSave.setSource(txtRecipeInputManBron.getText());
+					//recipeInputManSave.setFoto_naam(txtRecipeInputManFotonaam.getText());
+					recipeInputManSave.setPrep_tijd(txtRecipeInputManPreptijd.getText());
+					recipeInputManSave.setKook_tijd(txtRecipeInputManKooktijd.getText());
+					recipeInputManSave.setStappen(txtaRecipeInputManStappen.getText());
+					recipeInputManSave.setIngredienten(txtaRecipeInputManIngredients.getText());
+					recipeInputManSave.setExtras(txtaRecipeInputManExtras.getText());
+					
+				// tags are added to the recipe record and to the tags table in the database						
+					recipeInputManSave.setTag1(txtRecipeInputManTag1.getText());
+					//newTagsLijst.setTag1(value);
+					recipeInputManSave.setTag2(txtRecipeInputManTag2.getText());
+					//newTagsLijst.setTag2(value);
+					recipeInputManSave.setTag3(txtRecipeInputManTag3.getText());
+					//newTagsLijst.setTag3(value);
+					recipeInputManSave.setTag4(txtRecipeInputManTag4.getText());
+					//newTagsLijst.setTag4(value);
+					recipeInputManSave.setTag5(txtRecipeInputManTag5.getText());
+					//newTagsLijst.setTag5(value);
+					recipeInputManSave.setTag6(txtRecipeInputManTag6.getText());
+					//newTagsLijst.setTag6(value);
+					recipeInputManSave.setTag7(txtRecipeInputManTag7.getText());
+					//newTagsLijst.setTag7(value);
+					
+					ReceptDAO.addRecipe(recipeInputManSave, dbConnection);
 				}
 			}
 		});
@@ -1966,7 +2006,7 @@ public class MainView {
 		txtaRecipeInputManIngredients = new JTextArea();
 		spRecipeInputManIngredients.setViewportView(txtaRecipeInputManIngredients);
 		
-		JTextArea txtaRecipeInputManNotes = new JTextArea();
+		txtaRecipeInputManNotes = new JTextArea();
 		spRecipeInputManNotes.setViewportView(txtaRecipeInputManNotes);
 		
 		txtaRecipeInputManBeschrijving = new JTextArea();

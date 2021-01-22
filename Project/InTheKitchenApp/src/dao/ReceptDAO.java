@@ -57,13 +57,13 @@ public class ReceptDAO {
 				ps.setString(2, newRecept.getBeschrijving());		// char
 				ps.setString(3, newRecept.getNotes());				// char
 				ps.setString(4, newRecept.getAantal_personen());	// char
-				ps.setString(5, newRecept.getSuiker());				// int
-				ps.setString(6, newRecept.getEnergie());			// int
-				ps.setString(7, newRecept.getEiwit());				// int
-				ps.setString(8, newRecept.getKoolhydraten());		// int
-				ps.setString(9, newRecept.getVet());				// int
-				ps.setString(10, newRecept.getNatrium());			// int
-				ps.setString(11, newRecept.getVezels());			// int
+				ps.setString(5, newRecept.getSuiker());				// char
+				ps.setString(6, newRecept.getEnergie());			// char
+				ps.setString(7, newRecept.getEiwit());				// char
+				ps.setString(8, newRecept.getKoolhydraten());		// char
+				ps.setString(9, newRecept.getVet());				// char
+				ps.setString(10, newRecept.getNatrium());			// char
+				ps.setString(11, newRecept.getVezels());			// char
 				ps.setString(12, newRecept.getKeuken());			// char
 				ps.setString(13, newRecept.getMaal_type());			// char
 				ps.setString(14, newRecept.getThema());				// char
@@ -72,8 +72,8 @@ public class ReceptDAO {
 				ps.setString(17, newRecept.getIngredienten());		// char
 				ps.setString(18, newRecept.getExtras());			// char
 				ps.setString(19, newRecept.getFoto_naam());			// char
-				ps.setString(20, newRecept.getPrep_tijd());			// int
-				ps.setString(21, newRecept.getKook_tijd());			// int
+				ps.setString(20, newRecept.getPrep_tijd());			// char
+				ps.setString(21, newRecept.getKook_tijd());			// char
 				ps.setString(22, newRecept.getTag1());				// char
 				ps.setString(23, newRecept.getTag2());				// char
 				ps.setString(24, newRecept.getTag3());				// char
