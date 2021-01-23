@@ -140,15 +140,15 @@ public class DBReset {
 	    
     	st.execute(createTable);
 
-    	createTable = "CREATE TABLE taglijst ("
-    			+ "  id int NOT NULL GENERATED ALWAYS AS IDENTITY, "
-    			+ "  tagnaam varchar(45) DEFAULT NULL, "
-				+ "	 PRIMARY KEY (id)) ";
+		createTable = "CREATE TABLE taglijst (" +
+				"  id INT NOT NULL GENERATED ALWAYS AS IDENTITY," +
+				"  tagnaam VARCHAR(45) NOT NULL UNIQUE," +
+				"  PRIMARY KEY (id))";
 	    
-    	st.execute(createTable);
+		st.execute(createTable);
     		    
     	createTable = "CREATE TABLE recept ( "
-    			+ "  id int NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY, "
+    			+ "  id int NOT NULL GENERATED ALWAYS AS IDENTITY, "
     			+ "  naam varchar(150) NOT NULL UNIQUE, "
     			+ "  beschrijving varchar(500) DEFAULT NULL, "
     			+ "  notes varchar(200) DEFAULT NULL, "
@@ -176,7 +176,9 @@ public class DBReset {
     			+ "  tag4 varchar(50) DEFAULT NULL, "
     			+ "  tag5 varchar(50) DEFAULT NULL, "
     			+ "  tag6 varchar(50) DEFAULT NULL, "
-    			+ "  tag7 varchar(50) DEFAULT NULL) ";
+    			+ "  tag7 varchar(50) DEFAULT NULL, "
+    			+ "  tagstring varchar(100) DEFAULT NULL, "
+				+ "  PRIMARY KEY (id))";
 	    
     	st.execute(createTable);
 	    

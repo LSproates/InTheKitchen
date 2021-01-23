@@ -118,6 +118,25 @@ public class DatabaseAccess {
 	
 	public ArrayList<String> getTags (Connection con) {
 		
+//		ArrayList<String> lclListOfTags = new ArrayList<String>();
+    	
+//    	String selectRows = "SELECT tagnaam from taglijst order by tagnaam";
+
+//		try {
+//			Statement st = con.createStatement();
+			
+//			ResultSet rs = st.executeQuery(selectRows);
+			
+//			  while(rs.next()) { 
+//				  lclListOfTags.add(rs.getString("tagnaam"));
+//			  }
+			 
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+        
+//        return lclListOfTags;
 		return null;
 	}
 	

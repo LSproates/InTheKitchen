@@ -31,6 +31,7 @@ public class Recipe {
 	private String tag5;
 	private String tag6;
 	private String tag7;
+	private String tagstring;
 
 	public String getNaam() {
 		return naam;
@@ -211,5 +212,11 @@ public class Recipe {
 	}
 	public void setTag7(String tag7) {
 		this.tag7 = tag7;
+	}
+	public String getTagstring() {
+		return tagstring;
+	}
+	public void setTagstring(String tagstring) {
+		this.tagstring = tagstring;
 	}
 }

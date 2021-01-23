@@ -39,6 +39,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
+import org.apache.commons.io.FileUtils;
+
 import common.DBReset;
 import common.DatabaseAccess;
 import common.FilterDialog;
@@ -66,6 +68,9 @@ public class MainView {
 	public DatabaseAccess databaseAccess = new DatabaseAccess();
 	public Connection dbConnection = null;
 	public String imageFilename = "";
+	
+	private int selectedTagField;
+	private Recipe recipeInputManSave = null;
 
 	private JFrame frmInTheKitchen;
 	private JMenu mnHome;
@@ -215,6 +220,9 @@ public class MainView {
 	private JTextField txtRecipeInputManName;
 	private JPanel pnlRecipeInputManContainer;
 	private JTextArea txtaRecipeInputManNotes;
+	private JButton btnRecipeInputManTags;
+	private JTextField txtRecipeInputManPhotoName;
+	private JTextField txtRecipeInputManPhotoPath;
 
 	/**
 	 * Launch the application.
@@ -239,6 +247,9 @@ public class MainView {
 		initializeApplication();
 		componentsInitialize();
 		componentsEvents();
+		
+		//TODO  Adjust JTextArea for line wrap
+		//TODO  Add input for Tags and DB Tag table
 	}
 	
 	private void initializeApplication () {
@@ -278,6 +289,35 @@ public class MainView {
 		databaseAccess.getRecipeSummaryList(dbConnection);
 
 	}
+	
+	private void selectTag (JTextField selectedTagFocus) {
+		
+		String[] listOfItems = new String[listOfTags.size()];
+		listOfItems = listOfTags.toArray(listOfItems);
+		
+		ArrayList<String> selectedNames = FilterDialog.showDialog(
+							frmInTheKitchen,
+							btnRecipeInputManTags, 
+							"Defined tags:", 
+							"Choose tags", 
+							listOfItems,
+							selectedTagFocus.getText(), 
+							"",
+							ListSelectionModel.SINGLE_SELECTION);
+		  
+		String itemsSelected = "";
+		
+		for (String itemName: selectedNames) {
+				if(itemsSelected.equals("")) {
+					itemsSelected = itemName;
+				} else {
+					itemsSelected = itemsSelected + "," + itemName;
+				}
+		}
+		
+		selectedTagFocus.setText(itemsSelected);
+	}
+
 	
     // Methode to resize imageIcon with the same size of a Jlabel
    public ImageIcon ResizeImage(String ImagePath, JLabel label)
@@ -388,9 +428,14 @@ public class MainView {
 	          if(result == JFileChooser.APPROVE_OPTION){
 	              File selectedFile = file.getSelectedFile();
 	              String path = selectedFile.getAbsolutePath();
+	              txtRecipeInputManPhotoPath.setText(path);
+	              
 	              imageFilename = selectedFile.getName();
+	              txtRecipeInputManPhotoName.setText(imageFilename);
 	              lblRecipeImageLabel.setText("");
 	              lblRecipeImageLabel.setIcon(ResizeImage(path, lblRecipeImageLabel));
+	              
+	              // TODO Add copyto copy image to image repository; allow for paste from clipboard
 	          }
 	          else if(result == JFileChooser.CANCEL_OPTION){
 	        	  imageFilename = "";
@@ -641,7 +686,7 @@ public class MainView {
 				// Copy input data to instance Recipe class
 				// Verify that Name has been filled, otherwise abort
 				
-				Recipe recipeInputManSave = new Recipe();
+				recipeInputManSave = new Recipe();
 				
 				if (txtRecipeInputManName.getText().equals("") || txtRecipeInputManName.getText() == null) {
 					JOptionPane.showMessageDialog(null, "De naam van het recept moet ingevuld worden.", "information", JOptionPane.INFORMATION_MESSAGE);
@@ -650,7 +695,6 @@ public class MainView {
 					recipeInputManSave.setBeschrijving(txtaRecipeInputManBeschrijving.getText());
 					recipeInputManSave.setNotes(txtaRecipeInputManNotes.getText());
 					recipeInputManSave.setAantal_personen(txtRecipeInputManAantalPersonen.getText());
-					//recipeInputManSave.setVoedingswaarde(value);
 					recipeInputManSave.setEnergie(txtRecipeInputManEnergie.getText());
 					recipeInputManSave.setEiwit(txtRecipeInputManEiwit.getText());
 					recipeInputManSave.setKoolhydraten(txtRecipeInputManKoolhydraten.getText());
@@ -661,14 +705,28 @@ public class MainView {
 					recipeInputManSave.setMaal_type(txtRecipeInputManMaaltype.getText());
 					recipeInputManSave.setThema(txtRecipeInputManThema.getText());
 					recipeInputManSave.setSource(txtRecipeInputManBron.getText());
-					//recipeInputManSave.setFoto_naam(txtRecipeInputManFotonaam.getText());
+					recipeInputManSave.setFoto_naam(txtRecipeInputManPhotoName.getText());
 					recipeInputManSave.setPrep_tijd(txtRecipeInputManPreptijd.getText());
 					recipeInputManSave.setKook_tijd(txtRecipeInputManKooktijd.getText());
 					recipeInputManSave.setStappen(txtaRecipeInputManStappen.getText());
 					recipeInputManSave.setIngredienten(txtaRecipeInputManIngredients.getText());
 					recipeInputManSave.setExtras(txtaRecipeInputManExtras.getText());
 					
-				// tags are added to the recipe record and to the tags table in the database						
+					// If no image is included - set filename to null. No copy when filename is null.
+					if (!txtRecipeInputManPhotoName.getText().isEmpty()) {
+						// Copy the photo of recipe to image subfolder
+						
+						File imageSource = new File(txtRecipeInputManPhotoPath.getText() + "\\" + txtRecipeInputManPhotoName.getText());
+						File imageDest = new File("\\images\\recipes\\" + txtRecipeInputManPhotoName.getText());
+						try {
+						    FileUtils.copyFile(imageSource, imageDest);
+						} catch (IOException ioe) {
+						    ioe.printStackTrace();
+						}
+					}
+
+					
+					// tags are added to the recipe record and to the tags table in the database
 					recipeInputManSave.setTag1(txtRecipeInputManTag1.getText());
 					//newTagsLijst.setTag1(value);
 					recipeInputManSave.setTag2(txtRecipeInputManTag2.getText());
@@ -685,12 +743,96 @@ public class MainView {
 					//newTagsLijst.setTag7(value);
 					
 					ReceptDAO.addRecipe(recipeInputManSave, dbConnection);
+					TagsDAO.addTags(recipeInputManSave, dbConnection);
 				}
 			}
 		});
 
+		btnRecipeInputManTags.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				switch (selectedTagField) {
+				case 1:
+					selectTag(txtRecipeInputManTag1);
+					break;
+					
+				case 2:
+					selectTag(txtRecipeInputManTag2);
+					break;
+					
+				case 3:
+					selectTag(txtRecipeInputManTag3);
+					break;
+					
+				case 4:
+					selectTag(txtRecipeInputManTag4);
+					break;
+					
+				case 5:
+					selectTag(txtRecipeInputManTag5);
+					break;
+					
+				case 6:
+					selectTag(txtRecipeInputManTag6);
+					break;
+					
+				case 7:
+					selectTag(txtRecipeInputManTag7);
+					break;
+				}
+			}
+		});
+		
+		txtRecipeInputManTag1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedTagField = 1;
+			}
+		});
+		
+		txtRecipeInputManTag2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedTagField = 2;
+			}
+		});
+		
+		txtRecipeInputManTag3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedTagField = 3;
+			}
+		});
+		
+		txtRecipeInputManTag4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedTagField = 4;
+			}
+		});
+		
+		txtRecipeInputManTag5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedTagField = 5;
+			}
+		});
+		
+		txtRecipeInputManTag6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedTagField = 6;
+			}
+		});
+		
+		txtRecipeInputManTag7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				selectedTagField = 7;
+			}
+		});
 
-	}
+}
 
 
 	/**
@@ -1741,7 +1883,7 @@ public class MainView {
 		txtRecipeInputManTag1 = new JTextField();
 		txtRecipeInputManTag1.setColumns(10);
 		
-		JButton btnRecipeInputManTag1 = new JButton("Select");
+		btnRecipeInputManTags = new JButton("Select");
 		
 		txtRecipeInputManTag2 = new JTextField();
 		txtRecipeInputManTag2.setColumns(10);
@@ -1770,6 +1912,16 @@ public class MainView {
 		txtRecipeInputManName = new JTextField();
 		txtRecipeInputManName.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
 		txtRecipeInputManName.setColumns(10);
+		
+		txtRecipeInputManPhotoName = new JTextField();
+		txtRecipeInputManPhotoName.setEditable(false);
+		txtRecipeInputManPhotoName.setVisible(false);
+		txtRecipeInputManPhotoName.setColumns(10);
+		
+		txtRecipeInputManPhotoPath = new JTextField();
+		txtRecipeInputManPhotoPath.setVisible(false);
+		txtRecipeInputManPhotoPath.setEditable(false);
+		txtRecipeInputManPhotoPath.setColumns(10);
 		GroupLayout gl_pnlRecipeInputManContainer = new GroupLayout(pnlRecipeInputManContainer);
 		gl_pnlRecipeInputManContainer.setHorizontalGroup(
 			gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
@@ -1777,12 +1929,15 @@ public class MainView {
 					.addContainerGap()
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(lblRecipeImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-									.addComponent(lblRIManImage)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(btnImageBrowse)))
+							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(lblRecipeImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+										.addComponent(lblRIManImage)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(btnImageBrowse)))
+								.addComponent(txtRecipeInputManPhotoName, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtRecipeInputManPhotoPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addGap(37)
 							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblRecipeInputManBeschrijving)
@@ -1889,7 +2044,7 @@ public class MainView {
 									.addComponent(txtRecipeInputManTag6, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
 									.addComponent(txtRecipeInputManTag7, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(btnRecipeInputManTag1))))
+								.addComponent(btnRecipeInputManTags))))
 					.addGap(731))
 				.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
 					.addContainerGap()
@@ -1919,7 +2074,12 @@ public class MainView {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
 						.addComponent(spRecipeInputManNotes, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-						.addComponent(lblRecipeImageLabel, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+							.addComponent(lblRecipeImageLabel, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(txtRecipeInputManPhotoPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(txtRecipeInputManPhotoName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(spRecipeInputManBeschrijving, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.BASELINE)
@@ -1976,7 +2136,7 @@ public class MainView {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.BASELINE)
 								.addComponent(txtRecipeInputManTag1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnRecipeInputManTag1))
+								.addComponent(btnRecipeInputManTags))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(txtRecipeInputManTag2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -1998,18 +2158,28 @@ public class MainView {
 		);
 		
 		txtaRecipeInputManExtras = new JTextArea();
+		txtaRecipeInputManExtras.setWrapStyleWord(true);
+		txtaRecipeInputManExtras.setLineWrap(true);
 		spRecipeInputManExtras.setViewportView(txtaRecipeInputManExtras);
 		
 		txtaRecipeInputManStappen = new JTextArea();
+		txtaRecipeInputManStappen.setWrapStyleWord(true);
+		txtaRecipeInputManStappen.setLineWrap(true);
 		spRecipeInputManStappen.setViewportView(txtaRecipeInputManStappen);
 		
 		txtaRecipeInputManIngredients = new JTextArea();
+		txtaRecipeInputManIngredients.setWrapStyleWord(true);
+		txtaRecipeInputManIngredients.setLineWrap(true);
 		spRecipeInputManIngredients.setViewportView(txtaRecipeInputManIngredients);
 		
 		txtaRecipeInputManNotes = new JTextArea();
+		txtaRecipeInputManNotes.setWrapStyleWord(true);
+		txtaRecipeInputManNotes.setLineWrap(true);
 		spRecipeInputManNotes.setViewportView(txtaRecipeInputManNotes);
 		
 		txtaRecipeInputManBeschrijving = new JTextArea();
+		txtaRecipeInputManBeschrijving.setWrapStyleWord(true);
+		txtaRecipeInputManBeschrijving.setLineWrap(true);
 		spRecipeInputManBeschrijving.setViewportView(txtaRecipeInputManBeschrijving);
 		pnlRecipeInputManContainer.setLayout(gl_pnlRecipeInputManContainer);
 		pnlToevoegen.setLayout(gl_pnlToevoegen);

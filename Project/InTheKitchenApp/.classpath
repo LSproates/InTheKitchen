@@ -11,5 +11,10 @@
 	<classpathentry exported="true" kind="lib" path="lib/derbynet.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/derbyrun.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/derbytools.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.7.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.7-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.7-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.7-tests.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.7-test-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
