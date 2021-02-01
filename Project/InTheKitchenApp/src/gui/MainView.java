@@ -248,7 +248,6 @@ public class MainView {
 		componentsInitialize();
 		componentsEvents();
 		
-		//TODO  Adjust JTextArea for line wrap
 		//TODO  Add input for Tags and DB Tag table
 	}
 	
@@ -261,7 +260,6 @@ public class MainView {
 		/*
 		 * populateTables on dbReset to original setup and content --- give warning
 		 * try { databaseAccess.populateTables(dbConnection); } catch (SQLException e) {
-		 * // TODO Auto-generated catch block e.printStackTrace(); }
 		 */	
 		
 		listOfKitchens = databaseAccess.getKitchenNames(dbConnection);
@@ -320,9 +318,9 @@ public class MainView {
 
 	
     // Methode to resize imageIcon with the same size of a Jlabel
-   public ImageIcon ResizeImage(String ImagePath, JLabel label)
+   public ImageIcon ResizeImage(String imagePath, JLabel label)
    {
-       ImageIcon MyImage = new ImageIcon(ImagePath);
+       ImageIcon MyImage = new ImageIcon(imagePath);
        Image img = MyImage.getImage();
        Image newImg = img.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
        ImageIcon image = new ImageIcon(newImg);
@@ -402,8 +400,7 @@ public class MainView {
 
 		mnDBReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DBReset reset = new DBReset();
-				reset.resetDB(dbConnection);
+				DBReset.resetDB(dbConnection);
 			}
 		});
 		
@@ -633,7 +630,6 @@ public class MainView {
 				recipeList.clear();
 
 				initRecipeList();
-				System.out.println("Number of recipes found " + recipeList.size());
 				lstRecipeListElement.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 				lstRecipeListElement.setCellRenderer(new RecipeListRenderer());
 			}
@@ -645,7 +641,6 @@ public class MainView {
 
 			}
 		});
-
 		
 		lstRecipeListElement.addMouseListener(new MouseAdapter() {
 			@Override
@@ -673,11 +668,9 @@ public class MainView {
 			}
 		});
 
-
 		mnResetDB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DBReset reset = new DBReset();
-				reset.resetDB(dbConnection);
+				DBReset.resetDB(dbConnection);
 			}
 		});
 		
@@ -1750,7 +1743,7 @@ public class MainView {
 		
 		btnImageBrowse = new JButton("Browse ...");
 		
-		lblRecipeImageLabel = new JLabel("Uw image");
+		lblRecipeImageLabel = new JLabel("Paste");
 		lblRecipeImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		lblRecipeInputManBeschrijving = new JLabel("Beschrijving");

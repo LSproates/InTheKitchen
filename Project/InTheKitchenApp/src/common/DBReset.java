@@ -21,7 +21,7 @@ import dao.IngredientDAO;
 public class DBReset {
 	// Special class to reset db data to initial settings
 	
-	public void resetDB (Connection con) {
+	public static void resetDB (Connection con) {
 		try {
 			dropTables(con);
 			createTables(con);
@@ -34,7 +34,7 @@ public class DBReset {
 		}
 	}
 
-	public void dropTables (Connection con) throws SQLException {
+	private static void dropTables (Connection con) throws SQLException {
 		// recept, kitchen, mealtype, themes, tags, basis_ingredienten
 		
 		Statement st = null;
@@ -102,7 +102,7 @@ public class DBReset {
 		}
 	}
 	
-	private void createTables(Connection con) throws SQLException {
+	private static void createTables(Connection con) throws SQLException {
 		// recept, kitchen, mealtype, themes, tags, basis_ingredienten
 		
 		String createTable = "";
@@ -184,7 +184,7 @@ public class DBReset {
 	    
 	}
 	
-	public void populateTables (Connection con) throws SQLException {
+	private static void populateTables (Connection con) throws SQLException {
 		
 		Statement st = null;
 		String sqlRequest = "";
@@ -220,7 +220,7 @@ public class DBReset {
         st.execute(sqlRequest);
 	}
 	
-	public void populateDefaultRecipes (Connection con) {
+	private static void populateDefaultRecipes (Connection con) {
 		// read from default recipes file
 		// if file not present --- no default recipes
 		
@@ -268,7 +268,7 @@ public class DBReset {
 		   }
 	}
 	
-	public void loadBasisIngredienten (Connection con) {
+	private static void loadBasisIngredienten (Connection con) {
 		// read from basis ingredients file
 		// if no file then no basis ingredients
 		

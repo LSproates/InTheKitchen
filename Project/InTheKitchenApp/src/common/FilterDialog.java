@@ -78,6 +78,7 @@ public class FilterDialog extends JDialog
                                     String initialValue,
                                     String longValue,
                                     int selectionType) {
+    	
         Frame frame = JOptionPane.getFrameForComponent(frameComp);
         dialog = new FilterDialog(frame,
                                 locationComp,
