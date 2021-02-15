@@ -46,7 +46,7 @@ public class TagsDAO {
 			
 			ps = newConnection.prepareStatement(queryTags);
 			
-			ps.setString(1, recipe.getTag2());
+			ps.setString(1, recipe.getTag3());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 		    if(!e.getSQLState().equals("23505")) {
@@ -114,6 +114,24 @@ public class TagsDAO {
 				// Ignore error on duplicate records, print stacktrace on other SQL errors
 				e.printStackTrace();
 			}
+		}
+
+	}
+	
+	public static void addNewTag (String newTag, Connection newConnection) {
+		try {
+		   	PreparedStatement ps = null;
+			String queryTags = "insert into taglijst (tagnaam) values (?)";
+			
+			ps = newConnection.prepareStatement(queryTags);
+			
+			ps.setString(1, newTag);
+    		ps.executeUpdate();
+		} catch (SQLException e) {
+	        if(!e.getSQLState().equals("23505")) {
+	        	// Ignore error on duplicate records, print stacktrace on other SQL errors
+	        	e.printStackTrace();
+	        }
 		}
 
 	}

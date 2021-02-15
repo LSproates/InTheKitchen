@@ -290,30 +290,35 @@ public class MainView {
 	
 	private void selectTag (JTextField selectedTagFocus) {
 		
-		String[] listOfItems = new String[listOfTags.size()];
-		listOfItems = listOfTags.toArray(listOfItems);
-		
-		ArrayList<String> selectedNames = FilterDialog.showDialog(
-							frmInTheKitchen,
-							btnRecipeInputManTags, 
-							"Defined tags:", 
-							"Choose tags", 
-							listOfItems,
-							selectedTagFocus.getText(), 
-							"",
-							ListSelectionModel.SINGLE_SELECTION);
-		  
-		String itemsSelected = "";
-		
-		for (String itemName: selectedNames) {
-				if(itemsSelected.equals("")) {
-					itemsSelected = itemName;
-				} else {
-					itemsSelected = itemsSelected + "," + itemName;
-				}
+		System.out.println(listOfTags.size());
+		if (listOfTags == null || listOfTags.size() == 0) {
+			JOptionPane.showMessageDialog(frmInTheKitchen, "Nog geen tags beschikbaar", "Informatie", JOptionPane.INFORMATION_MESSAGE);
+		} else {
+			String[] listOfItems = new String[listOfTags.size()];
+			listOfItems = listOfTags.toArray(listOfItems);
+			
+			ArrayList<String> selectedNames = FilterDialog.showDialog(
+								frmInTheKitchen,
+								btnRecipeInputManTags, 
+								"Defined tags:", 
+								"Choose tag", 
+								listOfItems,
+								selectedTagFocus.getText(), 
+								listOfItems[0],
+								ListSelectionModel.SINGLE_SELECTION);
+			  
+			String itemsSelected = "";
+			
+			for (String itemName: selectedNames) {
+					if(itemsSelected.equals("")) {
+						itemsSelected = itemName;
+					} else {
+						itemsSelected = itemsSelected + "," + itemName;
+					}
+			}
+			
+			selectedTagFocus.setText(itemsSelected);
 		}
-		
-		selectedTagFocus.setText(itemsSelected);
 	}
 
 	
@@ -647,18 +652,9 @@ public class MainView {
 			public void mouseClicked(MouseEvent evt) {
 		        JList list = (JList)evt.getSource();
 		        int selectedID = 0;
-		        if (evt.getClickCount() == 2) {
+		        if ((evt.getClickCount() == 2) || (evt.getClickCount() == 3)) {
 
-		            // Double-click detected
-		            int index = list.locationToIndex(evt.getPoint());
-		            String myString = String.valueOf(list.getSelectedValue());
-		            selectedID = Integer.parseInt(myString.substring(myString.indexOf("ID: ") + 4, myString.indexOf(", ")));
-		            displayRecipeDetails(selectedID);
-					swapVisibility(pnlDetails);
-					
-		        } else if (evt.getClickCount() == 3) {
-
-		            // Triple-click detected
+		            // Double-click / triple-click detected
 		            int index = list.locationToIndex(evt.getPoint());
 		            String myString = String.valueOf(list.getSelectedValue());
 		            selectedID = Integer.parseInt(myString.substring(myString.indexOf("ID: ") + 4, myString.indexOf(", ")));
@@ -747,30 +743,37 @@ public class MainView {
 				switch (selectedTagField) {
 				case 1:
 					selectTag(txtRecipeInputManTag1);
+					System.out.println("Tag1 selected");
 					break;
 					
 				case 2:
 					selectTag(txtRecipeInputManTag2);
+					System.out.println("Tag2 selected");
 					break;
 					
 				case 3:
 					selectTag(txtRecipeInputManTag3);
+					System.out.println("Tag3 selected");
 					break;
 					
 				case 4:
 					selectTag(txtRecipeInputManTag4);
+					System.out.println("Tag4 selected");
 					break;
 					
 				case 5:
 					selectTag(txtRecipeInputManTag5);
+					System.out.println("Tag5 selected");
 					break;
 					
 				case 6:
 					selectTag(txtRecipeInputManTag6);
+					System.out.println("Tag6 selected");
 					break;
 					
 				case 7:
 					selectTag(txtRecipeInputManTag7);
+					System.out.println("Tag7 selected");
 					break;
 				}
 			}
@@ -780,6 +783,7 @@ public class MainView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedTagField = 1;
+				System.out.println("selectedTagField " + selectedTagField);
 			}
 		});
 		
@@ -787,6 +791,7 @@ public class MainView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedTagField = 2;
+				System.out.println("selectedTagField " + selectedTagField);
 			}
 		});
 		
@@ -794,6 +799,7 @@ public class MainView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedTagField = 3;
+				System.out.println("selectedTagField " + selectedTagField);
 			}
 		});
 		
@@ -801,6 +807,7 @@ public class MainView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedTagField = 4;
+				System.out.println("selectedTagField " + selectedTagField);
 			}
 		});
 		
@@ -808,6 +815,7 @@ public class MainView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedTagField = 5;
+				System.out.println("selectedTagField " + selectedTagField);
 			}
 		});
 		
@@ -815,6 +823,7 @@ public class MainView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedTagField = 6;
+				System.out.println("selectedTagField " + selectedTagField);
 			}
 		});
 		
@@ -822,6 +831,7 @@ public class MainView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedTagField = 7;
+				System.out.println("selectedTagField " + selectedTagField);
 			}
 		});
 
@@ -1359,9 +1369,9 @@ public class MainView {
 				.addGroup(gl_pnlCurrentRecipeContainer.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_pnlCurrentRecipeContainer.createParallelGroup(Alignment.LEADING)
-						.addComponent(pnlCurrentRecipeInstructions, GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
 						.addComponent(pnlCurrentRecipeInfo, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 1076, Short.MAX_VALUE)
-						.addComponent(pnlDivider, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE))
+						.addComponent(pnlDivider, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
+						.addComponent(pnlCurrentRecipeInstructions, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_pnlCurrentRecipeContainer.setVerticalGroup(
@@ -1371,9 +1381,9 @@ public class MainView {
 					.addComponent(pnlCurrentRecipeInfo, GroupLayout.PREFERRED_SIZE, 319, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(pnlDivider, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(48)
 					.addComponent(pnlCurrentRecipeInstructions, GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-					.addGap(19))
+					.addContainerGap())
 		);
 		
 		spCRIngredienten = new JScrollPane();
@@ -2066,14 +2076,14 @@ public class MainView {
 						.addComponent(lblRecipeInputManNotes))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
-						.addComponent(spRecipeInputManNotes, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+						.addComponent(spRecipeInputManNotes, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
 						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
 							.addComponent(lblRecipeImageLabel, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(txtRecipeInputManPhotoPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(txtRecipeInputManPhotoName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(spRecipeInputManBeschrijving, GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+						.addComponent(spRecipeInputManBeschrijving, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblRecipeInputManKeuken)

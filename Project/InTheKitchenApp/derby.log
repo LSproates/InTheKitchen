@@ -1,10 +1,6 @@
 ----------------------------------------------------------------
-2021-02-01 17:47:30.566 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.2.0 - (485682): instance c013800d-0177-5eb4-e3a6-00000771c828
+2021-02-15 09:31:08.359 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.2.2.0 - (485682): instance c013800d-0177-a507-7f7f-0000077215b8
 on database directory C:\Users\l_spr\git\InTheKitchen\Project\InTheKitchenApp\recipes  
 
 Database Class Loader started - derby.database.classpath=''
-
-2021-02-01 17:49:49.598 GMT:
-Shutting down instance c013800d-0177-5eb4-e3a6-00000771c828
-----------------------------------------------------------------

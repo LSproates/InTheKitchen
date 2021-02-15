@@ -17,6 +17,7 @@ import elementclasses.Recipe;
 import elementclasses.Ingredient;
 import dao.ReceptDAO;
 import dao.IngredientDAO;
+import dao.TagsDAO;
 
 public class DBReset {
 	// Special class to reset db data to initial settings
@@ -28,6 +29,7 @@ public class DBReset {
 			populateTables(con);
 			populateDefaultRecipes(con);
 			loadBasisIngredienten(con);
+			loadInitailTags(con);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -298,6 +300,34 @@ public class DBReset {
 		      e.printStackTrace();
 		   }
 		
+	}
+	
+	private static void loadInitailTags (Connection con) {
+		String initialTag = "";
+		
+		  try {
+		      File inputFile = new File("initialtags.txt");
+			  DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			  DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			  Document doc = dBuilder.parse(inputFile);
+			  doc.getDocumentElement().normalize();
+			  NodeList nList = doc.getElementsByTagName("tag");
+			  
+			  for (int i = 0; i < nList.getLength(); i++) {
+			     Node nNode = nList.item(i);
+			     
+			     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+			        Element eElement = (Element) nNode;
+			        initialTag = eElement.getElementsByTagName("naam").item(0).getTextContent();
+			        System.out.println(initialTag);
+			        
+			        TagsDAO.addNewTag(initialTag, con);
+		         }
+		      }
+		   } catch (Exception e) {
+		      e.printStackTrace();
+		   }
+	
 	}
 
 
