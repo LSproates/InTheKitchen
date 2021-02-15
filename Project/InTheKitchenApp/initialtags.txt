@@ -1,0 +1,12 @@
+<initialtags>
+	<tag>
+	  <naam>favoriet</naam>
+	</tag>
+	<tag>
+	  <naam>zondag</naam>
+	</tag>
+	<tag>
+	  <naam>lekker</naam>
+	</tag>
+ </initialtags>
+	
