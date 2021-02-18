@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -44,6 +45,7 @@ import org.apache.commons.io.FileUtils;
 import common.DBReset;
 import common.DatabaseAccess;
 import common.FilterDialog;
+import common.RecipeImport;
 import common.RecipeListElement;
 import common.RecipeListRenderer;
 import elementclasses.Recipe;
@@ -58,6 +60,13 @@ import java.awt.BorderLayout;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.border.BevelBorder;
+import javax.swing.UIManager;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.JTextPane;
+import java.awt.SystemColor;
 
 public class MainView {
 	
@@ -180,9 +189,6 @@ public class MainView {
 	private JLabel lblCRTags;
 	private JScrollPane spCRTags;
 	private JTextArea txtaCurrentRecipeTags;
-	private JPanel pnlImport;
-	private JPanel pnlDocument;
-	private JPanel pnlScan;
 	private JPanel pnlToevoegen;
 	private JScrollPane spRecipeInput;
 	private JButton btnImageBrowse;
@@ -206,23 +212,25 @@ public class MainView {
 	private JTextField txtRecipeInputManEiwit;
 	private JTextArea txtaRecipeInputManStappen;
 	private JTextArea txtaRecipeInputManIngredients;
-	private JTextArea txtaRecipeInputManExtras;
-	private JTextField txtRecipeInputManTag1;
-	private JTextField txtRecipeInputManTag2;
-	private JTextField txtRecipeInputManTag3;
-	private JTextField txtRecipeInputManTag4;
-	private JTextField txtRecipeInputManTag5;
-	private JTextField txtRecipeInputManTag6;
-	private JTextField txtRecipeInputManTag7;
 	private JButton btnRecipeInputManMaaltype;
 	private JButton btnRecipeInputManThema;
 	private JButton btnRecipeInputManSave;
 	private JTextField txtRecipeInputManName;
 	private JPanel pnlRecipeInputManContainer;
 	private JTextArea txtaRecipeInputManNotes;
-	private JButton btnRecipeInputManTags;
 	private JTextField txtRecipeInputManPhotoName;
 	private JTextField txtRecipeInputManPhotoPath;
+	private JButton btnRecipeInputImp;
+	private JTextField txtRecipeInputManTag2;
+	private JTextField txtRecipeInputManTag1;
+	private JTextField txtRecipeInputManTag3;
+	private JTextField txtRecipeInputManTag4;
+	private JTextField txtRecipeInputManTag5;
+	private JTextField txtRecipeInputManTag6;
+	private JTextField txtRecipeInputManTag7;
+	private JScrollPane spRecipeInputManExtras;
+	private JButton btnRecipeInputManTags;
+	private JTextArea txtaRecipeInputManExtras;
 
 	/**
 	 * Launch the application.
@@ -275,9 +283,6 @@ public class MainView {
 		pnlOverzicht.setVisible(false);
 		pnlDetails.setVisible(false);
 		pnlToevoegen.setVisible(false);
-		pnlImport.setVisible(false);
-		pnlDocument.setVisible(false);
-		pnlScan.setVisible(false);
 		
 		pnlToBeVisible.setVisible(true);
 		pnlToBeVisible.repaint();
@@ -377,7 +382,7 @@ public class MainView {
         txtaCurrentRecipeIngredienten.setText(databaseAccess.currentRecipe.getIngredienten());
         txtaCurrentRecipeStappen.setText(databaseAccess.currentRecipe.getStappen());
         txtaCurrentRecipeExtras.setText(databaseAccess.currentRecipe.getExtras());
-        txtaCurrentRecipeTags.setText(databaseAccess.currentRecipe.getTags());
+        txtaCurrentRecipeTags.setText(databaseAccess.currentRecipe.getTagstring());
 
 	}
 
@@ -413,6 +418,13 @@ public class MainView {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				swapVisibility(pnlOverzicht);
+			}
+		});
+		
+		mntmImport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				swapVisibility(pnlToevoegen);
+				btnRecipeInputImp.setVisible(true);
 			}
 		});
 		
@@ -643,7 +655,61 @@ public class MainView {
 		mntmZelf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				swapVisibility(pnlToevoegen);
+				btnRecipeInputImp.setVisible(false);
 
+			}
+		});
+		
+		btnRecipeInputImp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String url = txtRecipeInputManBron.getText();
+				
+				String imageURL = "https://www.24kitchen.nl/files/styles/300h_300w/public/2014-04/134748.original.jpg?itok=X9rm0sgJ";
+				
+				if (url.isEmpty() || url.equals("")) {
+					JOptionPane.showMessageDialog(pnlToevoegen, "Website Bron is niet gevuld.", "Website Bron", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+				
+					ArrayList<String> recipeParts = new ArrayList<String> ();
+					recipeParts = RecipeImport.importRecipe(url);
+					
+					String[] partsOfWebRecipe = new String[recipeParts.size()];
+					partsOfWebRecipe = recipeParts.toArray(partsOfWebRecipe);
+					
+					txtRecipeInputManName.setText(partsOfWebRecipe[0]);
+					txtaRecipeInputManIngredients.setText(partsOfWebRecipe[1]);
+					txtaRecipeInputManStappen.setText(partsOfWebRecipe[2]);
+					txtaRecipeInputManBeschrijving.setText(partsOfWebRecipe[3]);
+					txtaRecipeInputManNotes.setText(partsOfWebRecipe[4]);
+					String imageurl = partsOfWebRecipe[5];
+					System.out.println(imageurl);
+					txtRecipeInputManAantalPersonen.setText(partsOfWebRecipe[6]);
+					txtaRecipeInputManExtras.setText(partsOfWebRecipe[7]);
+					txtRecipeInputManPreptijd.setText(partsOfWebRecipe[8]);
+					txtRecipeInputManKooktijd.setText(partsOfWebRecipe[9]);
+					txtRecipeInputManEnergie.setText(partsOfWebRecipe[10]);
+					txtRecipeInputManVezels.setText(partsOfWebRecipe[11]);
+					txtRecipeInputManNatrium.setText(partsOfWebRecipe[12]);
+					txtRecipeInputManVet.setText(partsOfWebRecipe[13]);
+					txtRecipeInputManKoolhydraten.setText(partsOfWebRecipe[14]);
+					txtRecipeInputManEiwit.setText(partsOfWebRecipe[15]);
+					txtRecipeInputManSuiker.setText(partsOfWebRecipe[16]);
+					
+					Image image = null;
+					try {
+					    URL webImageURL = new URL(imageURL);
+					    image = ImageIO.read(webImageURL);
+						Image scaled = image.getScaledInstance(150,125,Image.SCALE_SMOOTH);
+
+				        ImageIcon imageIcon = new ImageIcon(scaled);
+
+					    lblRecipeImageLabel.setIcon(imageIcon);
+					    lblRecipeImageLabel.setText("");
+					} catch (IOException ioe) {
+						ioe.printStackTrace();
+					}
+				}
 			}
 		});
 		
@@ -734,104 +800,6 @@ public class MainView {
 					ReceptDAO.addRecipe(recipeInputManSave, dbConnection);
 					TagsDAO.addTags(recipeInputManSave, dbConnection);
 				}
-			}
-		});
-
-		btnRecipeInputManTags.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				switch (selectedTagField) {
-				case 1:
-					selectTag(txtRecipeInputManTag1);
-					System.out.println("Tag1 selected");
-					break;
-					
-				case 2:
-					selectTag(txtRecipeInputManTag2);
-					System.out.println("Tag2 selected");
-					break;
-					
-				case 3:
-					selectTag(txtRecipeInputManTag3);
-					System.out.println("Tag3 selected");
-					break;
-					
-				case 4:
-					selectTag(txtRecipeInputManTag4);
-					System.out.println("Tag4 selected");
-					break;
-					
-				case 5:
-					selectTag(txtRecipeInputManTag5);
-					System.out.println("Tag5 selected");
-					break;
-					
-				case 6:
-					selectTag(txtRecipeInputManTag6);
-					System.out.println("Tag6 selected");
-					break;
-					
-				case 7:
-					selectTag(txtRecipeInputManTag7);
-					System.out.println("Tag7 selected");
-					break;
-				}
-			}
-		});
-		
-		txtRecipeInputManTag1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				selectedTagField = 1;
-				System.out.println("selectedTagField " + selectedTagField);
-			}
-		});
-		
-		txtRecipeInputManTag2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				selectedTagField = 2;
-				System.out.println("selectedTagField " + selectedTagField);
-			}
-		});
-		
-		txtRecipeInputManTag3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				selectedTagField = 3;
-				System.out.println("selectedTagField " + selectedTagField);
-			}
-		});
-		
-		txtRecipeInputManTag4.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				selectedTagField = 4;
-				System.out.println("selectedTagField " + selectedTagField);
-			}
-		});
-		
-		txtRecipeInputManTag5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				selectedTagField = 5;
-				System.out.println("selectedTagField " + selectedTagField);
-			}
-		});
-		
-		txtRecipeInputManTag6.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				selectedTagField = 6;
-				System.out.println("selectedTagField " + selectedTagField);
-			}
-		});
-		
-		txtRecipeInputManTag7.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				selectedTagField = 7;
-				System.out.println("selectedTagField " + selectedTagField);
 			}
 		});
 
@@ -1720,15 +1688,6 @@ public class MainView {
 		pnlCurrentRecipeContainer.setLayout(gl_pnlCurrentRecipeContainer);
 		pnlDetails.setLayout(gl_pnlDetails);
 		
-		pnlImport = new JPanel();
-		frmInTheKitchen.getContentPane().add(pnlImport, "name_282206119915300");
-		
-		pnlDocument = new JPanel();
-		frmInTheKitchen.getContentPane().add(pnlDocument, "name_282282312230800");
-		
-		pnlScan = new JPanel();
-		frmInTheKitchen.getContentPane().add(pnlScan, "name_282322255940200");
-		
 		pnlToevoegen = new JPanel();
 		frmInTheKitchen.getContentPane().add(pnlToevoegen, "name_282488984061500");
 		
@@ -1875,37 +1834,6 @@ public class MainView {
 		
 		JScrollPane spRecipeInputManStappen = new JScrollPane();
 		
-		JLabel lblRecipeInputManExtras = new JLabel("Extras");
-		lblRecipeInputManExtras.setFont(new Font("Tahoma", Font.BOLD, 13));
-		
-		JScrollPane spRecipeInputManExtras = new JScrollPane();
-		
-		JLabel lblRecipeInputManTags = new JLabel("Tags");
-		lblRecipeInputManTags.setFont(new Font("Tahoma", Font.BOLD, 13));
-		
-		txtRecipeInputManTag1 = new JTextField();
-		txtRecipeInputManTag1.setColumns(10);
-		
-		btnRecipeInputManTags = new JButton("Select");
-		
-		txtRecipeInputManTag2 = new JTextField();
-		txtRecipeInputManTag2.setColumns(10);
-		
-		txtRecipeInputManTag3 = new JTextField();
-		txtRecipeInputManTag3.setColumns(10);
-		
-		txtRecipeInputManTag4 = new JTextField();
-		txtRecipeInputManTag4.setColumns(10);
-		
-		txtRecipeInputManTag5 = new JTextField();
-		txtRecipeInputManTag5.setColumns(10);
-		
-		txtRecipeInputManTag6 = new JTextField();
-		txtRecipeInputManTag6.setColumns(10);
-		
-		txtRecipeInputManTag7 = new JTextField();
-		txtRecipeInputManTag7.setColumns(10);
-		
 		btnRecipeInputManSave = new JButton("Opslaan");
 		btnRecipeInputManSave.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
@@ -1925,6 +1853,40 @@ public class MainView {
 		txtRecipeInputManPhotoPath.setVisible(false);
 		txtRecipeInputManPhotoPath.setEditable(false);
 		txtRecipeInputManPhotoPath.setColumns(10);
+		
+		btnRecipeInputImp = new JButton("Import");
+		btnRecipeInputImp.setBackground(new Color(0, 102, 255));
+		
+		JLabel lblRecipeInputManExtras = new JLabel("Extras");
+		lblRecipeInputManExtras.setFont(new Font("Tahoma", Font.BOLD, 13));
+		
+		JLabel lblRecipeInputManTags = new JLabel("Tags");
+		lblRecipeInputManTags.setFont(new Font("Tahoma", Font.BOLD, 13));
+		
+		spRecipeInputManExtras = new JScrollPane();
+		
+		txtRecipeInputManTag2 = new JTextField();
+		txtRecipeInputManTag2.setColumns(10);
+		
+		txtRecipeInputManTag1 = new JTextField();
+		txtRecipeInputManTag1.setColumns(10);
+		
+		txtRecipeInputManTag3 = new JTextField();
+		txtRecipeInputManTag3.setColumns(10);
+		
+		txtRecipeInputManTag4 = new JTextField();
+		txtRecipeInputManTag4.setColumns(10);
+		
+		txtRecipeInputManTag5 = new JTextField();
+		txtRecipeInputManTag5.setColumns(10);
+		
+		txtRecipeInputManTag6 = new JTextField();
+		txtRecipeInputManTag6.setColumns(10);
+		
+		txtRecipeInputManTag7 = new JTextField();
+		txtRecipeInputManTag7.setColumns(10);
+		
+		btnRecipeInputManTags = new JButton("Select");
 		GroupLayout gl_pnlRecipeInputManContainer = new GroupLayout(pnlRecipeInputManContainer);
 		gl_pnlRecipeInputManContainer.setHorizontalGroup(
 			gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
@@ -1932,95 +1894,102 @@ public class MainView {
 					.addContainerGap()
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING, false)
-									.addComponent(lblRecipeImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-										.addComponent(lblRIManImage)
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(btnImageBrowse)))
-								.addComponent(txtRecipeInputManPhotoName, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtRecipeInputManPhotoPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(37)
-							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblRecipeInputManBeschrijving)
-								.addComponent(spRecipeInputManBeschrijving, GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
-							.addGap(85)
-							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblRecipeInputManNotes)
-								.addComponent(spRecipeInputManNotes, GroupLayout.PREFERRED_SIZE, 297, GroupLayout.PREFERRED_SIZE))
-							.addGap(733))
-						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-									.addComponent(lblRecipeInputManAantalpersonen)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(txtRecipeInputManAantalPersonen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblRecipeInputManPreptijd)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(txtRecipeInputManPreptijd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblRecipeInputManKooktijd)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(txtRecipeInputManKooktijd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(lblRecipeInputManBron)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(txtRecipeInputManBron))
-								.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-									.addComponent(lblRecipeInputManKeuken)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtRecipeInputManKeuken, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnRecipeInputManKeuken)
-									.addGap(18)
-									.addComponent(lblRecipeInputManMaaltype)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(txtRecipeInputManMaaltype, GroupLayout.PREFERRED_SIZE, 293, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnRecipeInputManMaaltype)
-									.addGap(18)
-									.addComponent(lblRecipeInputManThema)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtRecipeInputManThema, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnRecipeInputManThema)))
-							.addGap(54))
-						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-							.addComponent(lblRecipeInputManVoeding)
-							.addContainerGap(1631, Short.MAX_VALUE))
-						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
 							.addComponent(lblRecipeInputManEnergie)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtRecipeInputManEnergie, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
+							.addComponent(txtRecipeInputManEnergie, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(lblRecipeInputManSuiker)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtRecipeInputManSuiker, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
+							.addComponent(txtRecipeInputManSuiker, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(lblRecipeInputManNatrium)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtRecipeInputManNatrium, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
+							.addComponent(txtRecipeInputManNatrium, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(lblRecipeInputManKoolhydraten)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtRecipeInputManKoolhydraten, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
+							.addComponent(txtRecipeInputManKoolhydraten, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(lblRecipeInputManVet)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtRecipeInputManVet, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
+							.addComponent(txtRecipeInputManVet, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(lblRecipeInputManVezels)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtRecipeInputManVezels, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
+							.addComponent(txtRecipeInputManVezels, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(lblRecipeInputManEiwit)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtRecipeInputManEiwit, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
+							.addComponent(txtRecipeInputManEiwit, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING, false)
+							.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+								.addComponent(lblRecipeInputManVoeding)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnRecipeInputImp))
+							.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+								.addComponent(lblRecipeInputManAantalpersonen)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(txtRecipeInputManAantalPersonen, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(lblRecipeInputManPreptijd)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(txtRecipeInputManPreptijd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(lblRecipeInputManKooktijd)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(txtRecipeInputManKooktijd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)
+								.addComponent(lblRecipeInputManBron)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(txtRecipeInputManBron))
+							.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+								.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+										.addComponent(lblRecipeInputManKeuken)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(txtRecipeInputManKeuken, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(btnRecipeInputManKeuken)
+										.addGap(18)
+										.addComponent(lblRecipeInputManMaaltype)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(txtRecipeInputManMaaltype, GroupLayout.PREFERRED_SIZE, 293, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+										.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING, false)
+											.addComponent(lblRecipeImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+												.addComponent(lblRIManImage)
+												.addPreferredGap(ComponentPlacement.UNRELATED)
+												.addComponent(btnImageBrowse))
+											.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+												.addComponent(txtRecipeInputManPhotoName, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(txtRecipeInputManPhotoPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+										.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
+											.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+												.addGap(63)
+												.addComponent(lblRecipeInputManBeschrijving))
+											.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+												.addGap(17)
+												.addComponent(spRecipeInputManBeschrijving, GroupLayout.PREFERRED_SIZE, 442, GroupLayout.PREFERRED_SIZE)))))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+											.addGap(151)
+											.addComponent(lblRecipeInputManNotes))
+										.addComponent(spRecipeInputManNotes, GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
+									.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+										.addComponent(btnRecipeInputManMaaltype)
+										.addGap(18)
+										.addComponent(lblRecipeInputManThema)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(txtRecipeInputManThema, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(btnRecipeInputManThema))))))
+					.addGap(794))
 				.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-					.addComponent(pnlRecipeInputManDivider, GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
+					.addComponent(pnlRecipeInputManDivider, GroupLayout.DEFAULT_SIZE, 1559, Short.MAX_VALUE)
 					.addGap(671))
 				.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
 					.addContainerGap()
@@ -2030,25 +1999,23 @@ public class MainView {
 					.addGap(41)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblRecipeInputManStappen)
-						.addComponent(spRecipeInputManStappen, GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(spRecipeInputManStappen, GroupLayout.PREFERRED_SIZE, 423, GroupLayout.PREFERRED_SIZE))
+					.addGap(50)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblRecipeInputManExtras)
-						.addComponent(lblRecipeInputManTags)
-						.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(spRecipeInputManExtras, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)
-							.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-								.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.TRAILING)
-									.addComponent(txtRecipeInputManTag2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-									.addComponent(txtRecipeInputManTag1)
-									.addComponent(txtRecipeInputManTag3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-									.addComponent(txtRecipeInputManTag4, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-									.addComponent(txtRecipeInputManTag5, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-									.addComponent(txtRecipeInputManTag6, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-									.addComponent(txtRecipeInputManTag7, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(btnRecipeInputManTags))))
-					.addGap(731))
+						.addComponent(lblRecipeInputManExtras, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+						.addComponent(spRecipeInputManExtras, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblRecipeInputManTags, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+							.addComponent(txtRecipeInputManTag1, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(btnRecipeInputManTags, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtRecipeInputManTag2, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtRecipeInputManTag3, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtRecipeInputManTag4, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtRecipeInputManTag5, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtRecipeInputManTag6, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtRecipeInputManTag7, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(1229, Short.MAX_VALUE))
 				.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblRIManName, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
@@ -2056,7 +2023,7 @@ public class MainView {
 					.addComponent(txtRecipeInputManName, GroupLayout.PREFERRED_SIZE, 481, GroupLayout.PREFERRED_SIZE)
 					.addGap(307)
 					.addComponent(btnRecipeInputManSave, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(752, Short.MAX_VALUE))
+					.addContainerGap(1225, Short.MAX_VALUE))
 		);
 		gl_pnlRecipeInputManContainer.setVerticalGroup(
 			gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
@@ -2076,14 +2043,14 @@ public class MainView {
 						.addComponent(lblRecipeInputManNotes))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
-						.addComponent(spRecipeInputManNotes, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+						.addComponent(spRecipeInputManNotes, GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+						.addComponent(spRecipeInputManBeschrijving, GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
 						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
-							.addComponent(lblRecipeImageLabel, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtRecipeInputManPhotoPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(txtRecipeInputManPhotoName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(spRecipeInputManBeschrijving, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+							.addComponent(lblRecipeImageLabel, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.BASELINE)
+								.addComponent(txtRecipeInputManPhotoName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtRecipeInputManPhotoPath, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblRecipeInputManKeuken)
@@ -2105,8 +2072,10 @@ public class MainView {
 						.addComponent(txtRecipeInputManKooktijd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblRecipeInputManBron)
 						.addComponent(txtRecipeInputManBron, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblRecipeInputManVoeding)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblRecipeInputManVoeding)
+						.addComponent(btnRecipeInputImp))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblRecipeInputManEnergie)
@@ -2128,32 +2097,35 @@ public class MainView {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblRecipeInputManIngredients)
-						.addComponent(lblRecipeInputManStappen)
-						.addComponent(lblRecipeInputManExtras))
+						.addComponent(lblRecipeInputManStappen))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+							.addComponent(lblRecipeInputManExtras, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
 							.addComponent(spRecipeInputManExtras, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblRecipeInputManTags)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.BASELINE)
-								.addComponent(txtRecipeInputManTag1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addComponent(lblRecipeInputManTags, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+									.addGap(1)
+									.addComponent(txtRecipeInputManTag1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addComponent(btnRecipeInputManTags))
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(6)
 							.addComponent(txtRecipeInputManTag2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(6)
 							.addComponent(txtRecipeInputManTag3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(6)
 							.addComponent(txtRecipeInputManTag4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(6)
 							.addComponent(txtRecipeInputManTag5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(6)
 							.addComponent(txtRecipeInputManTag6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(6)
 							.addComponent(txtRecipeInputManTag7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(85))
-						.addGroup(gl_pnlRecipeInputManContainer.createSequentialGroup()
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, gl_pnlRecipeInputManContainer.createSequentialGroup()
 							.addGroup(gl_pnlRecipeInputManContainer.createParallelGroup(Alignment.TRAILING)
 								.addComponent(spRecipeInputManStappen, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
 								.addComponent(spRecipeInputManIngredients, GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE))
@@ -2161,8 +2133,6 @@ public class MainView {
 		);
 		
 		txtaRecipeInputManExtras = new JTextArea();
-		txtaRecipeInputManExtras.setWrapStyleWord(true);
-		txtaRecipeInputManExtras.setLineWrap(true);
 		spRecipeInputManExtras.setViewportView(txtaRecipeInputManExtras);
 		
 		txtaRecipeInputManStappen = new JTextArea();

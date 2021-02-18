@@ -214,7 +214,8 @@ public class DatabaseAccess {
     			+ "  tag4, "
     			+ "  tag5, "
     			+ "  tag6, "
-    			+ "  tag7 FROM recept WHERE id = " + index;
+    			+ "  tag7, "
+    			+ "  tagstring FROM recept WHERE id = " + index;
     	
 		try {
 			Statement st = con.createStatement();
@@ -252,6 +253,7 @@ public class DatabaseAccess {
 				  currentRecipe.setTag5(rs.getString("tag5"));
 				  currentRecipe.setTag6(rs.getString("tag6"));
 				  currentRecipe.setTag7(rs.getString("tag7"));
+				  currentRecipe.setTagstring(rs.getString("tagstring"));
 				  
 			  }
 			 
