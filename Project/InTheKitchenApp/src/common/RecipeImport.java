@@ -18,6 +18,8 @@ import java.net.URLConnection;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class RecipeImport {
 	
 	private static String recipeTitle = "";
@@ -93,7 +95,7 @@ public class RecipeImport {
         title24Kitchen = doc.select("div.node__top > h1.p-name").first();
         titleAH = doc.select("header.header-inner > h1").first();
         titleAR = doc.select("div.headline-wrapper > h1").first();
-        titleBBCGF = doc.select("div.masthead__body > h1").first();
+        titleBBCGF = doc.select("div.header__body > h1").first();
         titleATK = doc.select("h1.recipe-detail-header__title").first();
         titleTasteShow = doc.select("div.left_side > h1").first();
         
@@ -117,9 +119,16 @@ public class RecipeImport {
         } else if (titleAH != null) {
             Elements ingredientsAH = doc.select("section.ingredients > ul.ingredient-selector-list > li");
             Elements instructionsAH = doc.select("section.preparation > ol > li");
+            Elements media = doc.select("[src]");
+            
+            for (Element src : media) {
+                if (src.normalName().equals("img") && (src.attr("abs:src").contains(".jpg") || src.attr("abs:src").contains(".JPG"))) {
+                    recipeImageURL = src.attr("abs:src").toString();
+                }
+            }
+
             recipeDescription = doc.select("header.header-inner > h2").first().text();
             recipeNotes = "";
-            recipeImageURL = doc.select("article > img.recipe-image").first().text();
             recipePersons = doc.select("div.scaler__scale > span.scaler__label").first().text();
             
             recipePrepTime = "";
@@ -138,42 +147,136 @@ public class RecipeImport {
         } else if (titleAR != null) {
             Elements ingredientsAR = doc.select(".ingredients-item");
             Elements instructionsAR = doc.select("div.paragraph");
-            Element recipeDescriptionAR = null;
-            Element recipeImageAR = null;
+            Elements media = doc.select("[src]");
+            Elements infoSectionHeader = doc.select(".recipe-meta-item-header");
+            Elements infoSectionBody = doc.select(".recipe-meta-item-body");
             
-        	recipeTitle = trim(titleAR.text(), 100);
-            for (Element ingredient : ingredientsAR) {
-             	ingredientsList = ingredientsList + trim(ingredient.text(), 50) + "\n";
-             }
+            for (Element src : media) {
+                if (src.normalName().equals("img") && (src.attr("abs:src").contains(".jpg") || src.attr("abs:src").contains(".JPG"))) {
+                    recipeImageURL = src.attr("abs:src").toString();
+                }
+            }
+
+            recipeDescription = doc.select("div.recipe-summary > p").first().text();;
+            recipeNotes = "";
+            recipePersons = "";
+            
+            recipePrepTime = "";
+            recipeCookTime = "";
+            
+            String[][] infoItems = new String[2][6];
+            
+            int iIndex = 0;
+	        for (Element infoHeader : infoSectionHeader) {
+        		infoItems[0][iIndex] = infoHeader.text();
+        		iIndex++;
+	        }
+            
+	        iIndex = 0;
+	        for (Element infoBody : infoSectionBody) {
+        		infoItems[1][iIndex] = infoBody.text();
+        		iIndex++;
+	        }
+
+	        for (int i=0; i<iIndex; i++) {
+	        	switch (infoItems[0][i]) {
+	        	case "prep:":
+	        		recipePrepTime = infoItems[1][i];
+	        		break;
+	        		
+	        	case "cook:":
+	        		recipeCookTime = infoItems[1][i];
+	        		break;
+	        		
+	        	case "Yield:":
+	        		recipePersons = infoItems[1][i];
+	        		break;
+	        	}
+	        }
+	        
+	        String nutrition = doc.select("div.recipe-nutrition-section > div.section-body").first().text();
+	        
+	        String[] parts = nutrition.split("; ");
+	        String[] subPart1 = parts[0].split(" ");
+	        recipeEnergy = subPart1[0] + "Kcal";
+            
+	        String[] subPart2 = parts[1].split(" ");
+	        recipeEiwit = subPart2[1];
+            
+	        String[] subPart3 = parts[2].split(" ");
+	        recipeKoolhyraten = subPart3[1];
+            
+	        String[] subPart4 = parts[3].split(" ");
+	        recipeVet = subPart4[1];
+            
+	        String[] subPart5 = parts[5].split(" ");
+	        recipeZout = subPart5[1];
+
+        	recipeVezels = "";
+        	recipeSuiker = "";
+
+            formatRecipeDetails(titleAR, ingredientsAR, instructionsAR);
 
        	
         } else if (titleBBCGF != null) {
-            Elements ingredientsBBCGF = doc.select("section.recipe-template__ingredients > section > ul > li");
-            Elements instructionsBBCGF = doc.select("section.recipe-template__method-steps > div.grouped-list");
-            Element recipeDescriptionBBCGF = null;
-            Element recipeImageBBCGF = null;
-      	
+            Elements ingredientsBBCGF = doc.select("section.recipe__ingredients > section > ul > li");
+            Elements instructionsBBCGF = doc.select("section.recipe__method-steps > div.grouped-list > ul > li");
+            recipeDescription = doc.select("div.mb-lg > div.editor-content > p").first().text();
+            Element media = doc.select("main.site-main > div.post > section > div.header__container > div.header__image > div.image > div.image__container > picture > img[src]").first();
+            recipeImageURL = media.attr("abs:src").toString();
+
+            recipeNotes = "";
+            recipePersons = doc.select("div.header__servings > div.icon-with-text__children").first().text();
+            
+            Elements timeRange = doc.select("div.time-range-list > div.icon-with-text__children > ul > li > span > time");
+            
+            int times = 0;
+            for (Element time : timeRange) {
+                if (times == 0) {
+                	recipePrepTime = time.text();
+                } else {
+                	recipeCookTime = time.text();
+                }
+                times++;
+            }
+            
+            Elements nutrition = doc.select("td.key-value-blocks__value");
+            String[] nutritionValues = new String[nutrition.size()];
+            int nutritionIndex = 0;
+            for (Element nutritionValue : nutrition) {
+            	nutritionValues[nutritionIndex] = nutritionValue.text();
+            	nutritionIndex++;
+            }
+            
+        	recipeEnergy = nutritionValues[0] + " kcal";
+        	recipeVezels = nutritionValues[5];
+        	recipeZout = nutritionValues[7];
+        	recipeVet = nutritionValues[1];
+        	recipeKoolhyraten = nutritionValues[3];
+        	recipeEiwit = nutritionValues[6];
+        	recipeSuiker = nutritionValues[4];
+
+            formatRecipeDetails(titleBBCGF, ingredientsBBCGF, instructionsBBCGF);
+        	
         } else if (titleATK != null) {
             Elements ingredientsATK = doc.select(".ingredient__title");
             Elements instructionsATK = doc.select(".recipe-instruction__content");
-            Element recipeDescriptionATK = null;
-            Element recipeImageATK = null;
             
-            for (Element ingredient : ingredientsATK) {
-            	ingredientsList = ingredientsList + trim(ingredient.text(), 50) + "\n";
-            }
+            formatRecipeDetails(titleATK, ingredientsATK, instructionsATK);
 
         	
         } else if (titleTasteShow != null) {
             Elements ingredientsTasteShow = doc.select("div.ingredients > ul > li");
             Elements instructionsTasteShow = doc.select("div.directions > div.one_step > div.text");
-            Element recipeDescriptionTasteShow = null;
-            Element recipeImageTasteShow = null;
+            Element recipeImageTasteShow = doc.select("div.featured_image > img").first();
+            recipeImageURL = recipeImageTasteShow.attr("abs:src").toString();
+            recipePersons = doc.select("div.recipe_info > div.serving").first().text();
+            recipeCookTime = doc.select("div.recipe_info > div.total_time").first().text();
             
-            for (Element ingredient : ingredientsTasteShow) {
-            	ingredientsList = ingredientsList + trim(ingredient.text(), 50) + "\n";
-            }
+            formatRecipeDetails(titleTasteShow, ingredientsTasteShow, instructionsTasteShow);
        	
+        } else {
+        	JOptionPane.showMessageDialog(null, "Recept formaat niet erkend.", "Onbekend recept formaat.", JOptionPane.INFORMATION_MESSAGE);
         }
         
         readWebRecipe.add(recipeTitle);
@@ -220,5 +323,17 @@ public class RecipeImport {
 	        	instructionsList = instructionsList + trim(instruction.text(), 250) + "\n\n";
 	        }
     	}
+    }
+    
+
+    private static void print(String msg, Object... args) {
+        System.out.println(String.format(msg, args));
+    }
+
+    private static String trimString (String s, int width) {
+        if (s.length() > width)
+            return s.substring(0, width-1) + ".";
+        else
+            return s;
     }
 }

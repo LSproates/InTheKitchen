@@ -168,7 +168,7 @@ public class DBReset {
     			+ "  stappen varchar(2100) DEFAULT NULL, "
     			+ "  extras varchar(250) DEFAULT NULL, "
     			+ "  source varchar(100) DEFAULT NULL, "
-    			+ "  foto_naam varchar(100) DEFAULT NULL, "
+    			+ "  foto_naam varchar(150) DEFAULT NULL, "
     			+ "  prep_tijd varchar(10) DEFAULT NULL, "
     			+ "  kook_tijd varchar(10) DEFAULT NULL, "
     			+ "  ingredienten varchar(2100) DEFAULT NULL, "
@@ -203,7 +203,7 @@ public class DBReset {
 		
 		//MealType
     	sqlRequest = "INSERT INTO mealtype (meal_type) values " +
-    			"(''), ('Bief'), ('Varkensvlees'), ('Kip'), ('Kaas'), ('Pasta'), ('Ovenschotel'), ('Rijst'), ('Bami-Noodles'), ('Sushi'), "
+    			"(''), ('Gemengd'), ('Bief'), ('Varkensvlees'), ('Kip'), ('Kaas'), ('Pasta'), ('Ovenschotel'), ('Rijst'), ('Bami-Noodles'), ('Sushi'), "
     			+ "('Aardappel'), ('Groenten'), ('Eieren'), ('Koekjes'), ('Salade'), ('Sauzen'), ('Soepen'), ('Taarten en cakes'), "
     			+ "('Drankjes'), ('Brood'), ('Smoothies'), ('Tussendoortje'), ('Bijgerecht'), ('Wittekool'), "
     			+ "('Hartige snacks'), ('Zoete snacks'), ('Gezond'), ('Vis'), ('Dressing'), ('Chocolade'), ('Fruit'), ('Noten'), "
@@ -214,7 +214,7 @@ public class DBReset {
         st.execute(sqlRequest);
 		
 		//themes
-    	sqlRequest = "INSERT INTO themes (theme) VALUES (''), ('Kerst'), ('Pasen'), ('Verjaardag'), ('Sinterklaas'), ('BBQ'), ('Tussendoortje'), "
+    	sqlRequest = "INSERT INTO themes (theme) VALUES (''), ('Algemeen'), ('Kerst'), ('Pasen'), ('Verjaardag'), ('Sinterklaas'), ('BBQ'), ('Tussendoortje'), "
     			+ "('Lente'), ('Zomer'), ('Herfst'), ('Winter'), ('Daags'), ('Dieeet'), ('Ontbijt'), ('Middag maaltijd'), ('Avond maaltijd'), ('+ Add new')";
 
 		st = con.createStatement();
