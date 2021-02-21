@@ -20,12 +20,8 @@ Use shortcrut pastry (not puff pastry) if chicken pie is to be saved and served 
 <natrium>3</natrium>
 <fibres>1</fibres>
 <kitchen>Engels</kitchen>
-<mealtype>
-Kip
-</mealtype>
-<theme>
-Daags, Avond maaltijd
-</theme>
+<mealtype>Kip</mealtype>
+<theme>Daags,Avond maaltijd</theme>
 <steps>
 STEP 1
 Heat the oil in a large, non-stick frying pan. Season the chicken thighs and fry for 5-8 mins until golden brown, turning occasionally. You may need to do this in two batches, depending on the size of your pan.
@@ -80,12 +76,8 @@ Hoe maak je de lekkerste wentelteefjes met brood, eieren, suiker en kaneel? Met 
 <natrium></natrium>
 <fibres></fibres>
 <kitchen>Nederlands</kitchen>
-<mealtype>
-Brood, Eieren
-</mealtype>
-<theme>
-Ontbijt
-</theme>
+<mealtype>Brood,Eieren</mealtype>
+<theme>Ontbijt</theme>
 <steps>
 Klop de eieren los met de melk in een diep bord. Voeg een snuf kaneel toe en de vanillesuiker. Klop nog een keer goed door met een vork of garde.
 
@@ -129,12 +121,8 @@ Gerookt paprikapoeder is verkrijgbaar bij de goed gesorteerde supermarkten. Je k
 <natrium></natrium>
 <fibres></fibres>
 <kitchen>Nederlands</kitchen>
-<mealtype>
-Kip
-</mealtype>
-<theme>
-Daags, Tussendoortje
-</theme>
+<mealtype>Kip</mealtype>
+<theme>Daags,Tussendoortje</theme>
 <steps>
 1 Verwarm je oven voor op 200 graden.
 2 Spoel de kippenpoten af onder de kraan en dep ze droog met keukenpapier.
@@ -177,12 +165,8 @@ Maak je ook burgers op de barbecue? Houd dan wat tomaten en uitjes achter voor o
 <natrium>360</natrium>
 <fibres>5</fibres>
 <kitchen>Nederlands</kitchen>
-<mealtype>
-Salade, Wittekool, Bijgerecht
-</mealtype>
-<theme>
-Daags
-</theme>
+<mealtype>Salade,Wittekool,Bijgerecht</mealtype>
+<theme>Daags</theme>
 <steps>
     Roer voor de dressing de mayonaise, yoghurt, mosterd en honing door elkaar. Breng op smaak met versgemalen peper en eventueel zout.
     Snijd de tomaten elk in acht parten. Halveer de Amsterdamse uien.

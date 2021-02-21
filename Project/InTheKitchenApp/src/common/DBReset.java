@@ -319,7 +319,6 @@ public class DBReset {
 			     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 			        Element eElement = (Element) nNode;
 			        initialTag = eElement.getElementsByTagName("naam").item(0).getTextContent();
-			        System.out.println(initialTag);
 			        
 			        TagsDAO.addNewTag(initialTag, con);
 		         }

@@ -163,6 +163,93 @@ public class DatabaseAccess {
         return listOfRecipeSummaries;
 	}
 	
+	public DefaultListModel<RecipeListElement> searchRecipes (Connection con, String kitchens, String mealtypes, String themes) {
+		DefaultListModel<RecipeListElement> listOfRecipeSummaries = new DefaultListModel<RecipeListElement>();
+    	
+		String[] kitchenTypes = kitchens.split(",");
+		String[] mealtypesTypes = mealtypes.split(",");
+		String[] themeTypes = themes.split(",");
+		
+		int i = 0;
+		String inClauseKitchen = "";
+		if (!kitchens.equals("")) {
+			inClauseKitchen = " ((keuken LIKE ";
+			while (i < kitchenTypes.length) {
+				inClauseKitchen = inClauseKitchen + "'%" + kitchenTypes[i] + "%')";
+				i++;
+				if (i == kitchenTypes.length) {
+					inClauseKitchen = inClauseKitchen + ")";
+				} else {
+					inClauseKitchen = inClauseKitchen + " OR (keuken LIKE ";
+				}
+			}
+			
+			if (!mealtypes.equals("") || !themes.equals("")) {
+				inClauseKitchen = inClauseKitchen + " OR ";
+			}
+		}
+		
+		i = 0;
+		String inClauseMealtypesTypes = "";
+		if (!mealtypes.equals("")) {
+			inClauseMealtypesTypes = "((maal_type LIKE ";
+			while (i < mealtypesTypes.length) {
+				inClauseMealtypesTypes = inClauseMealtypesTypes + "'%" + mealtypesTypes[i] + "%')";
+				i++;
+				if (i == mealtypesTypes.length) {
+					inClauseMealtypesTypes = inClauseMealtypesTypes + ")";
+				} else {
+					inClauseMealtypesTypes = inClauseMealtypesTypes + " OR (maal_type LIKE ";
+				}
+			}
+			
+			if (!themes.equals("")) {
+				inClauseMealtypesTypes = inClauseMealtypesTypes + " OR ";
+			}
+		}
+		
+		i = 0;
+		String inClauseThemesTypes = "";
+		if (!themes.equals("")) {
+			inClauseThemesTypes = "((thema LIKE ";
+			while (i < themeTypes.length) {
+				inClauseThemesTypes = inClauseThemesTypes + "'%" + themeTypes[i] + "%')";
+				i++;
+				if (i == themeTypes.length) {
+					inClauseThemesTypes = inClauseThemesTypes + ")";
+				} else {
+					inClauseThemesTypes = inClauseThemesTypes + " OR (thema LIKE ";
+				}
+			}
+		}
+		
+    	String selectRows = "SELECT id, naam, beschrijving, foto_naam, keuken, maal_type, thema from recept "
+    			+ "WHERE " + inClauseKitchen + inClauseMealtypesTypes + inClauseThemesTypes
+    			+ " order by naam";
+    	System.out.println(selectRows);
+
+		try {
+			Statement st = con.createStatement();
+			
+			ResultSet rs = st.executeQuery(selectRows);
+			
+			int count = 0;
+			  while(rs.next()) {
+				  MainView.recipeList.addElement(new RecipeListElement(rs.getInt("id"), rs.getString("naam"), rs.getString("beschrijving"), rs.getString("foto_naam"),
+						  rs.getString("keuken"), rs.getString("maal_type"), rs.getString("thema")));
+				  count++;
+				  
+			  }
+			  System.out.println("Records found: " + count);
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        return listOfRecipeSummaries;
+	}
+	
 	public void updateKitchenTable (String newKitchen) {
 		
 	}

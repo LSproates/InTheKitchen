@@ -296,7 +296,6 @@ public class MainView {
 	
 	private void selectTag (JTextField selectedTagFocus) {
 		
-		System.out.println(listOfTags.size());
 		if (listOfTags == null || listOfTags.size() == 0) {
 			JOptionPane.showMessageDialog(frmInTheKitchen, "Nog geen tags beschikbaar", "Informatie", JOptionPane.INFORMATION_MESSAGE);
 		} else {
@@ -972,6 +971,29 @@ public class MainView {
 				}
 			}
 		});
+		
+		btnZoekFilter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String selectedKitchens = "";
+				String selectedMealTypes = "";
+				String selectedThemes = "";
+				
+				selectedKitchens = txtKeukenFilter.getText();
+				selectedMealTypes = txtMaaltypeFilter.getText();
+				selectedThemes = txtThemaFilter.getText();
+				
+				// Search database
+				
+				recipeList.clear();
+				
+				databaseAccess.searchRecipes(dbConnection, selectedKitchens, selectedMealTypes, selectedThemes);
+
+				lstRecipeListElement.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				lstRecipeListElement.setCellRenderer(new RecipeListRenderer());
+			}
+		});
+
 
 }
 
@@ -1110,7 +1132,7 @@ public class MainView {
 		epFeaturette_2_Text.setEditable(false);
 		
 		lblFeaturette_2_Image = new JLabel("");
-		lblFeaturette_2_Image.setIcon(new ImageIcon(MainView.class.getResource("/recipe_photos/kitchen/americaans/pulled pork burger.jpg")));
+		lblFeaturette_2_Image.setIcon(new ImageIcon(MainView.class.getResource("/images/pulled-pork-burger.jpg")));
 		lblFeaturette_2_Image.setHorizontalAlignment(SwingConstants.CENTER);
 		GroupLayout gl_pnlFeaturette_2 = new GroupLayout(pnlFeaturette_2);
 		gl_pnlFeaturette_2.setHorizontalGroup(
@@ -1134,7 +1156,7 @@ public class MainView {
 		pnlFeaturette_2.setLayout(gl_pnlFeaturette_2);
 		
 		lblFeaturette_1_Image = new JLabel("");
-		lblFeaturette_1_Image.setIcon(new ImageIcon(MainView.class.getResource("/recipe_photos/kitchen/nederlands/hartige wentelteefjes.jpg")));
+		lblFeaturette_1_Image.setIcon(new ImageIcon(MainView.class.getResource("/images/hartige wentelteefjes.jpg")));
 		lblFeaturette_1_Image.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		epFeaturette_1_Text = new JEditorPane();
@@ -1501,7 +1523,7 @@ public class MainView {
 					.addGroup(gl_pnlCurrentRecipeContainer.createParallelGroup(Alignment.LEADING)
 						.addComponent(pnlCurrentRecipeInfo, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 1076, Short.MAX_VALUE)
 						.addComponent(pnlDivider, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
-						.addComponent(pnlCurrentRecipeInstructions, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(pnlCurrentRecipeInstructions, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_pnlCurrentRecipeContainer.setVerticalGroup(
@@ -1511,9 +1533,9 @@ public class MainView {
 					.addComponent(pnlCurrentRecipeInfo, GroupLayout.PREFERRED_SIZE, 319, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(pnlDivider, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addGap(48)
+					.addGap(18)
 					.addComponent(pnlCurrentRecipeInstructions, GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-					.addContainerGap())
+					.addGap(114))
 		);
 		
 		spCRIngredienten = new JScrollPane();
@@ -1545,9 +1567,9 @@ public class MainView {
 						.addComponent(lblCRIngredienten))
 					.addGap(18)
 					.addGroup(gl_pnlCurrentRecipeInstructions.createParallelGroup(Alignment.LEADING)
-						.addComponent(spCRSteps, GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-						.addComponent(lblCRStappen))
-					.addGap(18)
+						.addComponent(lblCRStappen)
+						.addComponent(spCRSteps, GroupLayout.PREFERRED_SIZE, 510, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
 					.addGroup(gl_pnlCurrentRecipeInstructions.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblCRExtras)
 						.addComponent(spCRExtras, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
@@ -1556,7 +1578,7 @@ public class MainView {
 					.addGap(39))
 		);
 		gl_pnlCurrentRecipeInstructions.setVerticalGroup(
-			gl_pnlCurrentRecipeInstructions.createParallelGroup(Alignment.LEADING)
+			gl_pnlCurrentRecipeInstructions.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_pnlCurrentRecipeInstructions.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_pnlCurrentRecipeInstructions.createParallelGroup(Alignment.BASELINE)
@@ -1565,14 +1587,14 @@ public class MainView {
 						.addComponent(lblCRExtras))
 					.addGap(7)
 					.addGroup(gl_pnlCurrentRecipeInstructions.createParallelGroup(Alignment.LEADING)
+						.addComponent(spCRSteps, GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
 						.addGroup(gl_pnlCurrentRecipeInstructions.createSequentialGroup()
 							.addComponent(spCRExtras, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(lblCRTags)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(spCRTags, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
-						.addComponent(spCRIngredienten, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-						.addComponent(spCRSteps, GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
+						.addComponent(spCRIngredienten, GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
