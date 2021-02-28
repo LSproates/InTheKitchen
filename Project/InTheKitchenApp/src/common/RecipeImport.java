@@ -320,7 +320,7 @@ public class RecipeImport {
     	
     	if (instructions != null ) {
 	        for (Element instruction : instructions) {
-	        	instructionsList = instructionsList + trim(instruction.text(), 250) + "\n\n";
+	        	instructionsList = instructionsList + trim(instruction.text(), 450) + "\n\n";
 	        }
     	}
     }

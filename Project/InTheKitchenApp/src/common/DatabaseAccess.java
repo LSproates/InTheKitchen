@@ -240,7 +240,6 @@ public class DatabaseAccess {
 				  count++;
 				  
 			  }
-			  System.out.println("Records found: " + count);
 			 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

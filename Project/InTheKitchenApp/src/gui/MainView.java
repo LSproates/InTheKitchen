@@ -1387,15 +1387,13 @@ public class MainView {
 		
 		btnTheme = new JButton("Thema");
 		
-		JLabel lblZoek = new JLabel("Zoek op Naam");
-		
 		txtZoekOpNaam = new JTextField();
 		txtZoekOpNaam.setColumns(10);
 		
 		txtKeukenFilter = new JTextField();
 		txtKeukenFilter.setColumns(10);
 		
-		btnZoek = new JButton("Zoek");
+		btnZoek = new JButton("Tags");
 		
 		txtMaaltypeFilter = new JTextField();
 		txtMaaltypeFilter.setColumns(10);
@@ -1418,23 +1416,19 @@ public class MainView {
 							.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
 								.addComponent(txtKeukenFilter, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE)
 								.addComponent(btnKeuken))))
-					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
 					.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnMaalType)
 						.addComponent(txtMaaltypeFilter, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE))
 					.addGap(41)
 					.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_pnlFilterBar.createSequentialGroup()
-							.addComponent(btnTheme)
-							.addGap(150)
-							.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblZoek)
-								.addGroup(gl_pnlFilterBar.createSequentialGroup()
-									.addComponent(txtZoekOpNaam, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnZoek))))
+						.addComponent(btnTheme)
 						.addComponent(txtThemaFilter, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE))
-					.addGap(1))
+					.addGap(67)
+					.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
+						.addComponent(txtZoekOpNaam, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnZoek))
+					.addGap(62))
 				.addGroup(gl_pnlFilterBar.createSequentialGroup()
 					.addComponent(btnZoekFilter)
 					.addContainerGap())
@@ -1443,30 +1437,26 @@ public class MainView {
 			gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnlFilterBar.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnlFilterBar.createSequentialGroup()
-							.addComponent(lblZoek)
+							.addComponent(lblFilters)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.BASELINE)
-								.addComponent(txtZoekOpNaam, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnZoek)))
-						.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_pnlFilterBar.createSequentialGroup()
-								.addComponent(lblFilters)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.BASELINE)
-									.addComponent(btnAllRecipes)
-									.addComponent(btnKeuken)))
-							.addGroup(gl_pnlFilterBar.createSequentialGroup()
-								.addGap(25)
-								.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.BASELINE)
-									.addComponent(btnTheme)
-									.addComponent(btnMaalType)))))
+								.addComponent(btnAllRecipes)
+								.addComponent(btnKeuken)))
+						.addGroup(gl_pnlFilterBar.createSequentialGroup()
+							.addGap(25)
+							.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnTheme)
+								.addComponent(btnMaalType)
+								.addComponent(btnZoek))))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.LEADING)
 						.addComponent(txtKeukenFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtMaaltypeFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtThemaFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_pnlFilterBar.createParallelGroup(Alignment.BASELINE)
+							.addComponent(txtThemaFilter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(txtZoekOpNaam, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addPreferredGap(ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
 					.addComponent(btnZoekFilter))
 		);
@@ -1599,15 +1589,23 @@ public class MainView {
 		);
 		
 		txtaCurrentRecipeTags = new JTextArea();
+		txtaCurrentRecipeTags.setWrapStyleWord(true);
+		txtaCurrentRecipeTags.setLineWrap(true);
 		spCRTags.setViewportView(txtaCurrentRecipeTags);
 		
 		txtaCurrentRecipeExtras = new JTextArea();
+		txtaCurrentRecipeExtras.setWrapStyleWord(true);
+		txtaCurrentRecipeExtras.setLineWrap(true);
 		spCRExtras.setViewportView(txtaCurrentRecipeExtras);
 		
 		txtaCurrentRecipeStappen = new JTextArea();
+		txtaCurrentRecipeStappen.setLineWrap(true);
+		txtaCurrentRecipeStappen.setWrapStyleWord(true);
 		spCRSteps.setViewportView(txtaCurrentRecipeStappen);
 		
 		txtaCurrentRecipeIngredienten = new JTextArea();
+		txtaCurrentRecipeIngredienten.setWrapStyleWord(true);
+		txtaCurrentRecipeIngredienten.setLineWrap(true);
 		spCRIngredienten.setViewportView(txtaCurrentRecipeIngredienten);
 		pnlCurrentRecipeInstructions.setLayout(gl_pnlCurrentRecipeInstructions);
 		

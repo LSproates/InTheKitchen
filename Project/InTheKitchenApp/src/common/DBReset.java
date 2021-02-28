@@ -194,7 +194,7 @@ public class DBReset {
 		//Kichtens
     	sqlRequest = "INSERT INTO kitchen (kitchen_type) values " +
     			"(''), ('Nederlands'), ('Frans'), ('Engels'), ('Chinees'), ('Japans'), ('Italiaans'), ('Duits'), ('Indonesisch'), ('Chinees-Indisch'), "
-    			+ "('Indiers'), ('Ander Aziatisch'), ('Turks-Arabisch'), ('Scandinavisch'), ('Oost Europees'), ('Americaans'), ('Zuid Americaans'), "
+    			+ "('Indiers'), ('Pakistaans'), ('Ander Aziatisch'), ('Turks-Arabisch'), ('Scandinavisch'), ('Oost Europees'), ('Americaans'), ('Zuid Americaans'), "
     			+ "('Algemeen'), ('Overige'), ('+ Add new')";
 
 		st = con.createStatement();
